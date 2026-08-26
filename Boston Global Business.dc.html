@@ -944,12 +944,15 @@
         </div>
       </div>
 
-      <form action="https://formspree.io/f/meaqjqda" method="POST" target="bgb_quote_hidden_frame" onSubmit="{{ submitForm }}" data-reveal style="background:#ffffff; padding:clamp(24px,3vw,40px); display:grid; gap:18px">
+      <form action="https://formspree.io/f/meaqjqda" method="POST" target="bgb_quote_hidden_frame" noValidate="{{ true }}" onSubmit="{{ submitForm }}" data-reveal style="background:#ffffff; padding:clamp(24px,3vw,40px); display:grid; gap:18px">
         <div style="display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(210px,1fr))">
           <sc-for list="{{ fields }}" as="f" hint-placeholder-count="12">
             <label style="display:grid; gap:8px">
               <span style="font-size:12px; letter-spacing:0.10em; font-weight:700; color:#176B87; text-transform:uppercase">{{ f.label }}</span>
               <span>{{ f.control }}</span>
+              <sc-if value="{{ f.error }}" hint-placeholder-val="{{ false }}">
+                <span style="font-size:11.5px; color:#dc2626">{{ f.errorMsg }}</span>
+              </sc-if>
             </label>
           </sc-for>
         </div>
@@ -1340,6 +1343,7 @@ const COPY = {
     fProduct: 'Producto', fVariety: 'Variedad', fVolume: 'Volumen estimado', fFrequency: 'Frecuencia',
     fDestination: 'Destino', fPort: 'Puerto preferido', fRequiredDate: 'Fecha requerida',
     fObservations: 'Observaciones', fProposalBtn: 'Solicitar propuesta',
+    fRequired: 'Datos obligatorios',
     companyTypeOptions: ['Importador', 'Distribuidor', 'Mayorista', 'Supermercado', 'Retail', 'Otro'],
     frequencyOptions: ['Compra puntual', 'Semanal', 'Quincenal', 'Mensual', 'Programa comercial'],
     productOptions: ['Manzana', 'Naranja', 'Kiwi', 'Pera', 'Otra fruta'],
@@ -1638,6 +1642,7 @@ const COPY = {
     fProduct: 'Product', fVariety: 'Variety', fVolume: 'Estimated volume', fFrequency: 'Frequency',
     fDestination: 'Destination', fPort: 'Preferred port', fRequiredDate: 'Required date',
     fObservations: 'Notes', fProposalBtn: 'Request a proposal',
+    fRequired: 'Required field',
     companyTypeOptions: ['Importer', 'Distributor', 'Wholesaler', 'Supermarket', 'Retail', 'Other'],
     frequencyOptions: ['One-off purchase', 'Weekly', 'Biweekly', 'Monthly', 'Supply program'],
     productOptions: ['Apple', 'Orange', 'Kiwi', 'Pear', 'Other fruit'],
@@ -2009,7 +2014,9 @@ class Component extends DCLogic {
     stageAuto: true,
     menuOpen: false,
     width: typeof window !== 'undefined' ? window.innerWidth : 1280,
-    sent: false
+    sent: false,
+    formTouched: false,
+    fieldErrors: {}
   };
 
   componentDidMount() {
@@ -2234,8 +2241,19 @@ class Component extends DCLogic {
 
   submitQuoteForm(e) {
     e.preventDefault();
-    this.setState({ sent: true });
     const form = e.currentTarget || e.target;
+    const REQUIRED_FIELDS = ['empresa', 'tax_id', 'comprador', 'correo', 'telefono', 'tipo_empresa', 'volumen', 'destino', 'puerto', 'origen_op', 'puerto_origen', 'fecha'];
+    const fd = new FormData(form);
+    const errors = {};
+    let hasErrors = false;
+    REQUIRED_FIELDS.forEach((name) => {
+      const val = (fd.get(name) || '').toString().trim();
+      if (!val) { errors[name] = true; hasErrors = true; }
+    });
+    this.setState({ formTouched: true, fieldErrors: errors });
+    if (hasErrors) return;
+
+    this.setState({ sent: true });
     console.log('[bgb] submitQuoteForm form element:', form, 'tagName:', form && form.tagName, 'has submit():', !!(form && typeof form.submit === 'function'));
     setTimeout(() => {
       if (form && typeof form.submit === 'function') {
@@ -2296,22 +2314,39 @@ class Component extends DCLogic {
       '; border:none; padding:8px 11px; font-size:12px; font-weight:700; letter-spacing:0.06em; cursor:pointer; line-height:1';
   }
 
-  select(name, label, options, preset) {
+  checkFieldValidity(name, required, value) {
+    if (!required) return;
+    const empty = !value || !String(value).trim();
+    this.setState((s) => ({ fieldErrors: Object.assign({}, s.fieldErrors, { [name]: empty }) }));
+  }
+
+  select(name, label, options, preset, required) {
     const has = preset !== undefined && preset !== null && preset !== '';
+    const t = COPY[this.state.lang];
+    const hasError = !!(required && this.state.formTouched && this.state.fieldErrors[name]);
     return {
       label: label,
       control: React.createElement('select', {
-        name: name, style: INPUT_STYLE,
+        name: name, required: !!required,
+        style: hasError ? Object.assign({}, INPUT_STYLE, { border: '1px solid #dc2626' }) : INPUT_STYLE,
         key: has ? name + '-' + preset : name,
         defaultValue: has ? String(preset) : undefined,
         onFocus: (e) => { e.target.style.borderColor = '#64CCC5'; },
-        onBlur: (e) => { e.target.style.borderColor = 'rgba(5,59,80,0.18)'; }
-      }, (options || []).map((o, i) => React.createElement('option', { key: i }, o)))
+        onChange: (e) => { this.checkFieldValidity(name, required, e.target.value); },
+        onBlur: (e) => {
+          this.checkFieldValidity(name, required, e.target.value);
+          e.target.style.borderColor = (required && this.state.fieldErrors[name]) ? '#dc2626' : 'rgba(5,59,80,0.18)';
+        }
+      }, (options || []).map((o, i) => React.createElement('option', { key: i }, o))),
+      error: hasError,
+      errorMsg: t.fRequired
     };
   }
 
   field(name, label, type, placeholder, required, preset) {
     const has = preset !== undefined && preset !== null && preset !== '';
+    const t = COPY[this.state.lang];
+    const hasError = !!(required && this.state.formTouched && this.state.fieldErrors[name]);
     return {
       label: label,
       control: React.createElement('input', {
@@ -2320,10 +2355,16 @@ class Component extends DCLogic {
         // key changes with the preset so React re-mounts and picks up the new default
         key: has ? name + '-' + preset : name,
         defaultValue: has ? String(preset) : undefined,
-        style: INPUT_STYLE,
+        style: hasError ? Object.assign({}, INPUT_STYLE, { border: '1px solid #dc2626' }) : INPUT_STYLE,
         onFocus: (e) => { e.target.style.borderColor = '#64CCC5'; },
-        onBlur: (e) => { e.target.style.borderColor = 'rgba(5,59,80,0.18)'; }
-      })
+        onChange: (e) => { this.checkFieldValidity(name, required, e.target.value); },
+        onBlur: (e) => {
+          this.checkFieldValidity(name, required, e.target.value);
+          e.target.style.borderColor = (required && this.state.fieldErrors[name]) ? '#dc2626' : 'rgba(5,59,80,0.18)';
+        }
+      }),
+      error: hasError,
+      errorMsg: t.fRequired
     };
   }
 
@@ -2371,22 +2412,22 @@ class Component extends DCLogic {
 
     const fields = [
       this.field('empresa', t.fCompany, 'text', t.fCompanyPh, true),
-      this.field('tax_id', t.fTaxId, 'text', ''),
+      this.field('tax_id', t.fTaxId, 'text', '', true),
       this.field('comprador', t.fBuyer, 'text', t.fNamePh, true),
       this.field('cargo', t.fRole, 'text', ''),
       this.field('correo', t.fCorpEmail, 'email', t.fEmailPh, true),
-      this.field('telefono', t.fPhoneWa, 'tel', '+1 253 384 2669'),
-      this.select('tipo_empresa', t.fCompanyType, t.companyTypeOptions),
+      this.field('telefono', t.fPhoneWa, 'tel', '+1 253 384 2669', true),
+      this.select('tipo_empresa', t.fCompanyType, t.companyTypeOptions, null, true),
       this.select('producto', t.fProduct, t.productOptions, pf && pf.product),
       this.field('variedad', t.fVariety, 'text', 'Granny Smith'),
-      this.field('volumen', t.fVolume, 'text', t.fQtyPh, false,
+      this.field('volumen', t.fVolume, 'text', t.fQtyPh, true,
         pf ? pf.weight_value + ' ' + pf.weight_unit.toUpperCase() : ''),
       this.select('frecuencia', t.fFrequency, t.frequencyOptions),
-      this.field('destino', t.fDestination, 'text', t.peru, false, pf && pf.destination_country),
-      this.field('puerto', t.fPort, 'text', 'Callao / Paita', false, pf && pf.destination_port),
-      this.field('origen_op', t.fOriginCountry, 'text', t.usa, false, pf && pf.origin_country),
-      this.field('puerto_origen', t.fOriginPort, 'text', 'Seattle', false, pf && pf.origin_port),
-      this.field('fecha', t.fRequiredDate, 'date', '')
+      this.field('destino', t.fDestination, 'text', t.peru, true, pf && pf.destination_country),
+      this.field('puerto', t.fPort, 'text', 'Callao / Paita', true, pf && pf.destination_port),
+      this.field('origen_op', t.fOriginCountry, 'text', t.usa, true, pf && pf.origin_country),
+      this.field('puerto_origen', t.fOriginPort, 'text', 'Seattle', true, pf && pf.origin_port),
+      this.field('fecha', t.fRequiredDate, 'date', '', true)
     ];
 
     const tt = Object.assign({}, t, {
