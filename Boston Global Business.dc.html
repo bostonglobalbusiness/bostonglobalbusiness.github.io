@@ -1344,7 +1344,8 @@ const COPY = {
     fDestination: 'Destino', fPort: 'Puerto preferido', fRequiredDate: 'Fecha requerida',
     fObservations: 'Observaciones', fProposalBtn: 'Solicitar propuesta',
     fRequired: 'Datos obligatorios',
-    companyTypeOptions: ['Importador', 'Distribuidor', 'Mayorista', 'Supermercado', 'Retail', 'Otro'],
+    fCompanyTypePh: 'Selecciona el tipo de empresa',
+    companyTypeOptions: ['', 'Importador', 'Distribuidor', 'Mayorista', 'Supermercado', 'Retail', 'Otro'],
     frequencyOptions: ['Compra puntual', 'Semanal', 'Quincenal', 'Mensual', 'Programa comercial'],
     productOptions: ['Manzana', 'Naranja', 'Kiwi', 'Pera', 'Otra fruta'],
     b2bBadge: 'SOLUCIONES B2B', b2bBadgeSub: 'Importadores · Distribuidores · Mayoristas · Supermercados',
@@ -1643,7 +1644,8 @@ const COPY = {
     fDestination: 'Destination', fPort: 'Preferred port', fRequiredDate: 'Required date',
     fObservations: 'Notes', fProposalBtn: 'Request a proposal',
     fRequired: 'Required field',
-    companyTypeOptions: ['Importer', 'Distributor', 'Wholesaler', 'Supermarket', 'Retail', 'Other'],
+    fCompanyTypePh: 'Select the company type',
+    companyTypeOptions: ['', 'Importer', 'Distributor', 'Wholesaler', 'Supermarket', 'Retail', 'Other'],
     frequencyOptions: ['One-off purchase', 'Weekly', 'Biweekly', 'Monthly', 'Supply program'],
     productOptions: ['Apple', 'Orange', 'Kiwi', 'Pear', 'Other fruit'],
     b2bBadge: 'B2B SOLUTIONS', b2bBadgeSub: 'Importers · Distributors · Wholesalers · Supermarkets',
@@ -2337,7 +2339,7 @@ class Component extends DCLogic {
           this.checkFieldValidity(name, required, e.target.value);
           e.target.style.borderColor = (required && this.state.fieldErrors[name]) ? '#dc2626' : 'rgba(5,59,80,0.18)';
         }
-      }, (options || []).map((o, i) => React.createElement('option', { key: i }, o))),
+      }, (options || []).map((o, i) => React.createElement('option', { key: i, value: o }, o || t.fCompanyTypePh))),
       error: hasError,
       errorMsg: t.fRequired
     };
