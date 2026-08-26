@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Áreas privadas — no indexar
+Disallow: /login
+Disallow: /register
+Disallow: /client/
+Disallow: /operations/
+Disallow: /admin/
+
+Sitemap: https://bostonglobalbusiness.com/sitemap.xml

@@ -1,0 +1,87 @@
+{
+  "_meta": {
+    "note": "Seed / static verified routes. Migrar a tabla trade_routes cuando exista base de datos.",
+    "classifications": ["BGB_ROUTE", "VERIFIED_SERVICE", "TRANSSHIPMENT", "TRENDING_CORRIDOR", "MARKET_OPPORTUNITY"]
+  },
+  "ports": [
+    { "unlocode": "USSEA", "name": "Seattle", "country_code": "USA", "lat": 47.602, "lon": -122.336 },
+    { "unlocode": "USTIW", "name": "Tacoma", "country_code": "USA", "lat": 47.266, "lon": -122.418 },
+    { "unlocode": "USLAX", "name": "Los Angeles", "country_code": "USA", "lat": 33.729, "lon": -118.262 },
+    { "unlocode": "USLGB", "name": "Long Beach", "country_code": "USA", "lat": 33.754, "lon": -118.216 },
+    { "unlocode": "USHOU", "name": "Houston", "country_code": "USA", "lat": 29.726, "lon": -95.264 },
+    { "unlocode": "USPEF", "name": "Port Everglades", "country_code": "USA", "lat": 26.093, "lon": -80.116 },
+    { "unlocode": "USMIA", "name": "PortMiami", "country_code": "USA", "lat": 25.778, "lon": -80.171 },
+    { "unlocode": "PECLL", "name": "Callao", "country_code": "PER", "lat": -12.052, "lon": -77.146 },
+    { "unlocode": "PEPAI", "name": "Paita", "country_code": "PER", "lat": -5.086, "lon": -81.107 }
+  ],
+  "routes": [
+    {
+      "id": "bgb-sea-cll",
+      "origin_port": "USSEA", "destination_port": "PECLL",
+      "origin_country": "USA", "destination_country": "PER",
+      "classification": "BGB_ROUTE", "bgb_operated": true, "is_public": true,
+      "carrier": null, "service_name": null, "service_type": null,
+      "frequency": null, "transit_time": null,
+      "cargo_types": ["fresh_produce", "general"], "reefer_available": null,
+      "trend_score": null, "trend_status": null,
+      "source_name": "Operación coordinada por Boston Global Business",
+      "source_url": null, "last_verified": "2026-08-18"
+    },
+    {
+      "id": "bgb-lax-cll",
+      "origin_port": "USLAX", "destination_port": "PECLL",
+      "origin_country": "USA", "destination_country": "PER",
+      "classification": "BGB_ROUTE", "bgb_operated": true, "is_public": true,
+      "carrier": null, "service_name": null, "service_type": null,
+      "frequency": null, "transit_time": null,
+      "cargo_types": ["fresh_produce", "general"], "reefer_available": null,
+      "trend_score": null, "trend_status": null,
+      "source_name": "Operación coordinada por Boston Global Business",
+      "source_url": null, "last_verified": "2026-08-18"
+    },
+    {
+      "id": "bgb-lax-pai",
+      "origin_port": "USLAX", "destination_port": "PEPAI",
+      "origin_country": "USA", "destination_country": "PER",
+      "classification": "BGB_ROUTE", "bgb_operated": true, "is_public": true,
+      "carrier": null, "service_name": null, "service_type": null,
+      "frequency": null, "transit_time": null,
+      "cargo_types": ["fresh_produce", "general"], "reefer_available": null,
+      "trend_score": null, "trend_status": null,
+      "source_name": "Operación coordinada por Boston Global Business",
+      "source_url": null, "last_verified": "2026-08-18"
+    },
+    {
+      "id": "opp-lax-pacific",
+      "origin_port": "USLAX", "destination_port": null,
+      "destination_label_es": "Mercados del Pacífico", "destination_label_en": "Pacific markets",
+      "destination_lat": 20.0, "destination_lon": -155.0,
+      "origin_country": "USA", "destination_country": null,
+      "classification": "MARKET_OPPORTUNITY", "bgb_operated": false, "is_public": true,
+      "carrier": null, "service_name": null, "service_type": null,
+      "frequency": null, "transit_time": null,
+      "cargo_types": null, "reefer_available": null,
+      "trend_score": null, "trend_status": "insufficient_data",
+      "note_es": "El complejo Los Angeles / Long Beach es el principal gateway de contenedores de EE. UU.",
+      "note_en": "The Los Angeles / Long Beach complex is the leading US container gateway.",
+      "source_name": "Port of Los Angeles; USDA Agricultural Marketing Service",
+      "source_url": null, "last_verified": "2026-08-18"
+    },
+    {
+      "id": "opp-sea-asia",
+      "origin_port": "USSEA", "destination_port": null,
+      "destination_label_es": "Asia-Pacífico", "destination_label_en": "Asia-Pacific",
+      "destination_lat": 22.3, "destination_lon": 114.2,
+      "origin_country": "USA", "destination_country": null,
+      "classification": "MARKET_OPPORTUNITY", "bgb_operated": false, "is_public": true,
+      "carrier": null, "service_name": null, "service_type": null,
+      "frequency": null, "transit_time": null,
+      "cargo_types": null, "reefer_available": null,
+      "trend_score": null, "trend_status": "insufficient_data",
+      "note_es": "La Northwest Seaport Alliance (Seattle-Tacoma) es un gateway relevante de comercio trans-Pacífico.",
+      "note_en": "The Northwest Seaport Alliance (Seattle-Tacoma) is a significant trans-Pacific gateway.",
+      "source_name": "The Northwest Seaport Alliance",
+      "source_url": null, "last_verified": "2026-08-18"
+    }
+  ]
+}
