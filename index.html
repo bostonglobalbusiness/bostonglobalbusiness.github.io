@@ -155,9 +155,9 @@
 
     <div style="position:relative; width:100%; max-width:1280px; margin:0 auto; padding:clamp(90px,12vw,150px) clamp(20px,5vw,48px) clamp(48px,6vw,84px); display:grid; gap:clamp(36px,5vw,64px); grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); align-items:end">
       <div>
-        <div data-reveal style="display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(100,204,197,0.45); padding:8px 14px; margin-bottom:26px">
+        <div data-reveal style="display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(100,204,197,0.45); padding:8px 14px; margin-bottom:26px; max-width:100%">
           <span style="width:6px; height:6px; border-radius:50%; background:#64CCC5; display:block; flex:none"></span>
-          <span style="font-size:13px; letter-spacing:0.26em; color:#64CCC5; font-weight:600; white-space:nowrap">{{ t.heroEyebrow }}</span>
+          <span style="font-size:13px; letter-spacing:0.26em; color:#64CCC5; font-weight:600">{{ t.heroEyebrow }}</span>
         </div>
         <h1 data-reveal style="font-family:Montserrat,sans-serif; font-weight:700; font-size:clamp(38px,5.6vw,72px); line-height:1.03; letter-spacing:-0.02em; color:#ffffff; margin:0 0 24px; text-wrap:balance">{{ t.heroTitle }}</h1>
         <p data-reveal style="font-size:clamp(17px,1.6vw,21px); line-height:1.5; color:#EEEEEE; font-weight:500; margin:0 0 18px; max-width:38ch">{{ t.heroSub }}</p>
@@ -204,9 +204,9 @@
     <div style="max-width:1280px; margin:0 auto; padding:clamp(56px,7vw,96px) clamp(20px,5vw,48px)">
       <div style="display:flex; flex-wrap:wrap; gap:20px; align-items:flex-end; justify-content:space-between; margin-bottom:clamp(32px,4vw,48px)">
         <div>
-          <div data-reveal style="display:inline-flex; align-items:center; gap:10px; background:#053B50; padding:8px 14px; margin-bottom:16px">
+          <div data-reveal style="display:inline-flex; align-items:center; gap:10px; background:#053B50; padding:8px 14px; margin-bottom:16px; max-width:100%">
             <span style="width:6px; height:6px; border-radius:50%; background:#64CCC5; display:block; flex:none"></span>
-            <span style="font-size:12.5px; letter-spacing:0.22em; color:#64CCC5; font-weight:700; white-space:nowrap">{{ t.b2bBadge }}</span>
+            <span style="font-size:12.5px; letter-spacing:0.22em; color:#64CCC5; font-weight:700">{{ t.b2bBadge }}</span>
           </div>
           <h2 data-reveal style="font-family:Montserrat,sans-serif; font-weight:700; font-size:clamp(26px,3.2vw,40px); line-height:1.1; letter-spacing:-0.015em; color:#053B50; margin:0">{{ t.b2bTitle }}</h2>
         </div>
@@ -684,7 +684,7 @@
 
       <div data-reveal style="background:#053B50; padding:clamp(26px,3.4vw,52px) clamp(20px,3vw,44px)">
         <div style="display:flex; align-items:center; gap:14px; margin-bottom:clamp(28px,3vw,42px)">
-          <span style="font-size:12.5px; letter-spacing:0.24em; color:#64CCC5; font-weight:700; white-space:nowrap">{{ t.chainOrigin }}</span>
+          <span style="font-size:12.5px; letter-spacing:0.24em; color:#64CCC5; font-weight:700">{{ t.chainOrigin }}</span>
           <span style="flex:1; position:relative; height:2px; background:rgba(100,204,197,0.22); display:block">
             <span style="position:absolute; inset:0; overflow:hidden; display:block">
               <svg width="100%" height="2" viewBox="0 0 120 2" preserveAspectRatio="none" style="display:block">
@@ -692,12 +692,12 @@
               </svg>
             </span>
           </span>
-          <span style="font-size:12.5px; letter-spacing:0.24em; color:#64CCC5; font-weight:700; white-space:nowrap">{{ t.chainDest }}</span>
+          <span style="font-size:12.5px; letter-spacing:0.24em; color:#64CCC5; font-weight:700">{{ t.chainDest }}</span>
         </div>
 
-        <div style="display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); margin-bottom:clamp(28px,3.4vw,44px)">
+        <div onMouseLeave="{{ resumeStageAuto }}" style="display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); margin-bottom:clamp(28px,3.4vw,44px)">
           <sc-for list="{{ chain }}" as="c" hint-placeholder-count="6">
-            <button type="button" onClick="{{ c.select }}" onMouseEnter="{{ c.select }}" style="{{ c.railStyle }}">
+            <button type="button" onClick="{{ c.select }}" onMouseEnter="{{ c.preview }}" style="{{ c.railStyle }}">
               <span style="{{ c.dotStyle }}"></span>
               <span style="{{ c.iconWrapStyle }}">{{ c.icon }}</span>
               <span style="{{ c.stepStyle }}">{{ c.step }}</span>
@@ -749,9 +749,9 @@
   <section id="productos" style="background:#ffffff; scroll-margin-top:104px">
     <div style="max-width:1280px; margin:0 auto; padding:clamp(72px,9vw,128px) clamp(20px,5vw,48px)">
       <div style="max-width:64ch; margin-bottom:clamp(40px,5vw,64px)">
-        <div data-reveal style="display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(23,107,135,0.35); padding:8px 14px; margin-bottom:22px">
+        <div data-reveal style="display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(23,107,135,0.35); padding:8px 14px; margin-bottom:22px; max-width:100%">
           <span style="width:6px; height:6px; border-radius:50%; background:#64CCC5; display:block; flex:none"></span>
-          <span style="font-size:12.5px; letter-spacing:0.22em; color:#176B87; font-weight:700; white-space:nowrap">{{ t.freshBadge }}</span>
+          <span style="font-size:12.5px; letter-spacing:0.22em; color:#176B87; font-weight:700">{{ t.freshBadge }}</span>
         </div>
         <h2 data-reveal style="font-family:Montserrat,sans-serif; font-weight:700; font-size:clamp(30px,3.8vw,48px); line-height:1.1; letter-spacing:-0.015em; color:#053B50; margin:0 0 20px; text-wrap:balance">{{ t.prodTitle }}</h2>
         <p data-reveal style="font-size:clamp(17px,1.7vw,20px); line-height:1.55; color:#176B87; font-weight:500; margin:0 0 22px">{{ t.prodSub }}</p>
@@ -1984,11 +1984,18 @@ const KG_PER_LB = 0.45359237;
 
 /* Accepts "1000", "1.000", "1,000" and "1000.5" — separators are normalized before
    parsing so a locale habit never turns into a wrong number. */
+function toggleStyle(active, cfg) {
+  return 'background:' + (active ? cfg.onBg : cfg.offBg) +
+    '; color:' + (active ? cfg.onColor : cfg.offColor) +
+    (cfg.border === false ? '; border:none' : '; ' + (cfg.borderProp || 'border') + ':' + (active ? cfg.onBorder : cfg.offBorder)) +
+    '; ' + cfg.rest;
+}
+
 function parseWeight(raw) {
   const s = String(raw == null ? '' : raw).trim().replace(/\s/g, '');
   if (!s) return null;
   let norm = s;
-  if (/^\d{1,3}([.,]\d{3})+$/.test(s)) norm = s.replace(/[.,]/g, '');
+  if (/^\d{1,3}([.,]\d{3}){2,}$/.test(s)) norm = s.replace(/[.,]/g, '');
   else norm = s.replace(',', '.');
   const n = parseFloat(norm);
   return isFinite(n) ? n : null;
@@ -2113,6 +2120,7 @@ class Component extends DCLogic {
         if (r.top < vh && r.bottom > 0) show(el);
       });
     }, 1500);
+    setTimeout(() => clearInterval(this._safety), 20000);
   }
 
   componentWillUnmount() {
@@ -2123,6 +2131,7 @@ class Component extends DCLogic {
     clearInterval(this._scanTimer);
     clearInterval(this._safety);
     clearInterval(this._stageTimer);
+    clearTimeout(this._scanTimeout);
     document.querySelectorAll('[data-reveal]').forEach((el) => {
       el.style.opacity = '';
       el.style.transform = '';
@@ -2131,7 +2140,16 @@ class Component extends DCLogic {
   }
 
   setLang(lang) {
-    this.setState({ lang: lang, menuOpen: false });
+    const oldT = COPY[this.state.lang];
+    const newT = COPY[lang];
+    const remap = (value, oldList, newList) => {
+      const idx = oldList.indexOf(value);
+      return idx === -1 ? value : (newList[idx] || value);
+    };
+    const patch = { lang: lang, menuOpen: false };
+    if (this.state.oppCargo) patch.oppCargo = remap(this.state.oppCargo, oldT.cargoTypes, newT.cargoTypes);
+    if (this.state.oppProduct) patch.oppProduct = remap(this.state.oppProduct, oldT.fruitProducts, newT.fruitProducts);
+    this.setState(patch);
     try { localStorage.setItem('bgb-lang', lang); } catch (e) {}
     this.applyDocumentLang(lang);
   }
@@ -2171,9 +2189,11 @@ class Component extends DCLogic {
   }
 
   mktBtn(active) {
-    return 'background:' + (active ? '#176B87' : '#ffffff') + '; color:' + (active ? '#ffffff' : '#176B87') +
-      '; border:1px solid ' + (active ? '#176B87' : 'rgba(23,107,135,0.35)') +
-      '; padding:14px 26px; font-size:16px; font-weight:700; letter-spacing:0.03em; cursor:pointer; border-radius:2px; transition:background .25s ease, color .25s ease, border-color .25s ease';
+    return toggleStyle(active, {
+      onBg: '#176B87', offBg: '#ffffff', onColor: '#ffffff', offColor: '#176B87',
+      onBorder: '1px solid #176B87', offBorder: '1px solid rgba(23,107,135,0.35)',
+      rest: 'padding:14px 26px; font-size:16px; font-weight:700; letter-spacing:0.03em; cursor:pointer; border-radius:2px; transition:background .25s ease, color .25s ease, border-color .25s ease'
+    });
   }
 
   /* Reference-type detection for the quick search. Order matters: BGB tracking
@@ -2475,8 +2495,11 @@ class Component extends DCLogic {
   }
 
   langBtn(active) {
-    return 'background:' + (active ? '#64CCC5' : 'transparent') + '; color:' + (active ? '#053B50' : '#EEEEEE') +
-      '; border:none; padding:8px 11px; font-size:13.5px; font-weight:700; letter-spacing:0.06em; cursor:pointer; line-height:1';
+    return toggleStyle(active, {
+      onBg: '#64CCC5', offBg: 'transparent', onColor: '#053B50', offColor: '#EEEEEE',
+      border: false,
+      rest: 'padding:8px 11px; font-size:13.5px; font-weight:700; letter-spacing:0.06em; cursor:pointer; line-height:1'
+    });
   }
 
   checkFieldValidity(name, required, value) {
@@ -2563,14 +2586,19 @@ class Component extends DCLogic {
     const evansPublic = evansRel === 'VERIFIED_BGB_ACCESS' || evansRel === 'ACTIVE_SUPPLIER';
 
     const netBgb = this.state.netTab !== 'opp';
-    const tabStyle = (on) => 'background:transparent; border:none; border-bottom:2px solid ' +
-      (on ? '#176B87' : 'transparent') + '; color:' + (on ? '#053B50' : 'rgba(5,59,80,0.55)') +
-      '; font-family:Montserrat,sans-serif; font-weight:600; font-size:16.5px; letter-spacing:0.01em; padding:14px 22px; cursor:pointer; transition:color .25s ease, border-color .25s ease';
+    const tabStyle = (on) => toggleStyle(on, {
+      onBg: 'transparent', offBg: 'transparent', onColor: '#053B50', offColor: 'rgba(5,59,80,0.55)',
+      borderProp: 'border-bottom', onBorder: '2px solid #176B87', offBorder: '2px solid transparent',
+      rest: 'border-top:none; border-left:none; border-right:none; font-family:Montserrat,sans-serif; font-weight:600; font-size:16.5px; letter-spacing:0.01em; padding:14px 22px; cursor:pointer; transition:color .25s ease, border-color .25s ease'
+    });
     const panelStyle = (on) => on
       ? 'display:block; animation:bgb-tab .26s ease both'
       : 'display:none';
-    const unitStyle = (on) => 'background:' + (on ? '#64CCC5' : 'transparent') + '; color:' +
-      (on ? '#053B50' : 'rgba(238,238,238,0.75)') + '; border:none; padding:0 18px; font-size:15px; font-weight:700; letter-spacing:0.04em; cursor:pointer';
+    const unitStyle = (on) => toggleStyle(on, {
+      onBg: '#64CCC5', offBg: 'transparent', onColor: '#053B50', offColor: 'rgba(238,238,238,0.75)',
+      border: false,
+      rest: 'padding:0 18px; font-size:15px; font-weight:700; letter-spacing:0.04em; cursor:pointer'
+    });
     const countryOpts = this.countryOptions();
     const originPorts = (ORIGIN_COUNTRIES.find((c) => c.code === this.state.oppOriginCountry) || { ports: [] }).ports;
     const destPorts = (DEST_COUNTRIES.find((c) => c.code === this.state.oppDestCountry) || { ports: [] }).ports;
@@ -2621,10 +2649,11 @@ class Component extends DCLogic {
       brandFilters: t.brandsFilters.map((label, i) => ({
         label: label,
         onClick: () => this.setState({ brandFilter: i }),
-        style: 'border:1px solid ' + (this.state.brandFilter === i ? '#176B87' : 'rgba(5,59,80,0.20)') +
-          '; background:' + (this.state.brandFilter === i ? '#176B87' : 'transparent') +
-          '; color:' + (this.state.brandFilter === i ? '#ffffff' : 'rgba(5,59,80,0.72)') +
-          '; font-size:14.5px; font-weight:600; letter-spacing:0.03em; padding:10px 18px; cursor:pointer; transition:background-color .2s ease, color .2s ease, border-color .2s ease'
+        style: toggleStyle(this.state.brandFilter === i, {
+          onBg: '#176B87', offBg: 'transparent', onColor: '#ffffff', offColor: 'rgba(5,59,80,0.72)',
+          onBorder: '1px solid #176B87', offBorder: '1px solid rgba(5,59,80,0.20)',
+          rest: 'font-size:14.5px; font-weight:600; letter-spacing:0.03em; padding:10px 18px; cursor:pointer; transition:background-color .2s ease, color .2s ease, border-color .2s ease'
+        })
       })),
       brandCards: publicProducers.map((p) => ({
         name: p.name, location: p.location,
@@ -2739,7 +2768,8 @@ class Component extends DCLogic {
         '; grid-template-columns:' + (desktop ? 'minmax(0,46fr) minmax(0,54fr)' : '1fr'),
       trackUniversalSubmit: (e) => {
         e.preventDefault();
-        const raw = (e.target.querySelector('input') || {}).value || '';
+        const form = e.currentTarget || e.target;
+        const raw = (form.querySelector('input') || {}).value || '';
         this.runScan('universal', this.detectType(raw, t));
       },
       registerFields: [
@@ -2809,6 +2839,7 @@ class Component extends DCLogic {
           icon: icon(c[0], 22, on ? '#053B50' : teal),
           step: c[1], title: c[2],
           select: () => this.setState({ stage: i, stageAuto: false }),
+          preview: () => this.setState({ stage: i }),
           railStyle: 'position:relative; text-align:left; background:' + (on ? 'rgba(100,204,197,0.12)' : 'transparent') +
             '; border:none; border-top:2px solid ' + (on ? '#64CCC5' : 'rgba(100,204,197,0.28)') +
             '; padding:26px 16px 24px 0; cursor:pointer; display:grid; gap:10px; justify-items:start; transition:background .3s ease, border-color .3s ease',
@@ -2821,6 +2852,7 @@ class Component extends DCLogic {
             (on ? '#ffffff' : 'rgba(238,238,238,0.70)') + '; transition:color .3s ease'
         };
       }),
+      resumeStageAuto: () => this.setState({ stageAuto: true }),
       activeIcon: icon(t.chain[this.state.stage][0], 28, teal),
       activeStep: t.chain[this.state.stage][1],
       activeTitle: t.chain[this.state.stage][2],
