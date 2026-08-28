@@ -491,7 +491,7 @@
           </div>
         </div>
 
-        <form onSubmit="{{ oppSubmit }}" style="display:grid; align-content:center; gap:clamp(24px,2.6vw,32px); padding:clamp(8px,1.4vw,24px) clamp(4px,1vw,16px)">
+        <form action="https://formspree.io/f/meaqjqda" method="POST" target="bgb_opp_hidden_frame" onSubmit="{{ oppSubmit }}" style="display:grid; align-content:center; gap:clamp(24px,2.6vw,32px); padding:clamp(8px,1.4vw,24px) clamp(4px,1vw,16px)">
           <div style="display:grid; gap:12px; padding-bottom:clamp(20px,2.4vw,28px); border-bottom:1px solid rgba(100,204,197,0.25)">
             <label for="opp-origin-country" style="font-size:13.5px; letter-spacing:0.22em; color:#64CCC5; font-weight:700">{{ t.oppOriginLabel }}</label>
             <select id="opp-origin-country" value="{{ oppOriginCountry }}" onChange="{{ setOppOriginCountry }}" style="{{ oppSelectStyle }}">
@@ -557,6 +557,11 @@
             </div>
           </div>
 
+          <div style="display:grid; gap:12px">
+            <label for="opp-email" style="font-size:13.5px; letter-spacing:0.22em; color:#64CCC5; font-weight:700">{{ t.oppEmailLabel }}</label>
+            <input id="opp-email" name="email" type="email" autocomplete="email" value="{{ oppEmail }}" onChange="{{ setOppEmail }}" placeholder="{{ t.oppEmailPh }}" style="{{ oppInputStyle }}">
+          </div>
+
           <div style="display:flex; align-items:center; gap:12px; font-size:15px; line-height:1.6; color:rgba(238,238,238,0.72)">
             <span style="{{ oppStatusDot }}"></span>
             <span>{{ oppStatusText }}</span>
@@ -566,10 +571,16 @@
             <p role="alert" style="margin:0; background:rgba(238,238,238,0.10); border-left:2px solid #64CCC5; padding:12px 14px; font-size:15px; line-height:1.6; color:#EEEEEE">{{ oppError }}</p>
           </sc-if>
 
+          <input type="hidden" name="opportunity_origin" value="{{ oppOriginSummary }}">
+          <input type="hidden" name="opportunity_destination" value="{{ oppDestSummary }}">
+          <input type="hidden" name="opportunity_cargo" value="{{ oppCargo }} / {{ oppProduct }}">
+          <input type="hidden" name="opportunity_weight" value="{{ oppWeight }} {{ oppUnit }}">
+          <input type="hidden" name="_subject" value="Nueva oportunidad de mercado explorada">
           <button type="submit" style="background:#64CCC5; color:#053B50; font-weight:700; font-size:17px; letter-spacing:0.03em; padding:17px 28px; border:none; cursor:pointer; transition:background .25s ease, transform .25s ease" style-hover="background:#EEEEEE; transform:translateY(-2px)">{{ t.oppQuoteBtn }}</button>
 
           <p style="margin:0; font-size:13.5px; line-height:1.6; color:rgba(238,238,238,0.55)">{{ t.oppStatusNote }}</p>
         </form>
+        <iframe name="bgb_opp_hidden_frame" style="display:none" aria-hidden="true"></iframe>
       </div>
 
       <div data-reveal style="margin-top:clamp(40px,4.6vw,60px)">
@@ -1420,6 +1431,7 @@ const COPY = {
     oppOriginLabel: 'ORIGEN', oppDestLabel: 'DESTINO',
     oppCargoLabel: 'TIPO DE CARGAMENTO', oppProductLabel: 'PRODUCTO',
     oppWeightLabel: 'PESO APROXIMADO',
+    oppEmailLabel: 'CORREO DE CONTACTO', oppEmailPh: 'tu@empresa.com',
     oppCountryPh: 'Selecciona un país', oppPortPh: 'Puerto o ciudad (opcional)',
     oppCargoPh: 'Selecciona el tipo de carga', oppProductPh: 'Selecciona el producto',
     oppQuoteBtn: 'Cotizar',
@@ -1430,6 +1442,7 @@ const COPY = {
     oppErrDest: 'Selecciona un país de destino.',
     oppErrCargo: 'Selecciona el tipo de cargamento.',
     oppErrWeight: 'Ingresa un peso aproximado mayor que cero.',
+    oppErrEmail: 'Ingresa un correo válido para que podamos contactarte.',
     oppErrSame: 'El origen y el destino no pueden ser el mismo punto.',
     oppSent: 'Datos trasladados al formulario de cotización. Completa tus datos de contacto para que nuestro equipo evalúe la operación.',
     oppOther: 'Otro',
@@ -1731,6 +1744,7 @@ const COPY = {
     oppOriginLabel: 'ORIGIN', oppDestLabel: 'DESTINATION',
     oppCargoLabel: 'CARGO TYPE', oppProductLabel: 'PRODUCT',
     oppWeightLabel: 'APPROXIMATE WEIGHT',
+    oppEmailLabel: 'CONTACT EMAIL', oppEmailPh: 'you@company.com',
     oppCountryPh: 'Select a country', oppPortPh: 'Port or city (optional)',
     oppCargoPh: 'Select the cargo type', oppProductPh: 'Select the product',
     oppQuoteBtn: 'Request a quote',
@@ -1741,6 +1755,7 @@ const COPY = {
     oppErrDest: 'Select a destination country.',
     oppErrCargo: 'Select the cargo type.',
     oppErrWeight: 'Enter an approximate weight greater than zero.',
+    oppErrEmail: 'Enter a valid email so we can contact you.',
     oppErrSame: 'Origin and destination cannot be the same location.',
     oppSent: 'Details carried over to the quote form. Complete your contact information so our team can evaluate the operation.',
     oppOther: 'Other',
@@ -2019,7 +2034,7 @@ class Component extends DCLogic {
     netTab: 'bgb',
     oppOriginCountry: 'US', oppOriginPort: '',
     oppDestCountry: '', oppDestPort: '',
-    oppCargo: '', oppProduct: '',
+    oppCargo: '', oppProduct: '', oppEmail: '',
     oppWeight: '', oppUnit: 'kg',
     oppError: '', oppSent: false,
     quotePrefill: null,
@@ -2464,7 +2479,10 @@ class Component extends DCLogic {
     else if (!s.oppCargo) err = t.oppErrCargo;
     else if (w === null || w <= 0) err = t.oppErrWeight;
     else if (Math.abs(o.lat - d.lat) < 0.01 && Math.abs(o.lon - d.lon) < 0.01) err = t.oppErrSame;
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((s.oppEmail || '').trim())) err = t.oppErrEmail;
     if (err) { this.setState({ oppError: err, oppSent: false }); return; }
+
+    const form = e.currentTarget || e.target;
 
     // No tariff is computed — this becomes a quote request with the data carried over.
     this.setState({
@@ -2479,6 +2497,9 @@ class Component extends DCLogic {
         status: 'new'
       }
     });
+    setTimeout(() => {
+      if (form && typeof form.submit === 'function') form.submit();
+    }, 0);
     const target = document.getElementById('cotizacion');
     if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 96, behavior: 'smooth' });
   }
@@ -2738,6 +2759,7 @@ class Component extends DCLogic {
       oppDestPort: this.state.oppDestPort,
       oppCargo: this.state.oppCargo,
       oppProduct: this.state.oppProduct,
+      oppEmail: this.state.oppEmail,
       oppWeight: this.state.oppWeight,
       oppError: this.state.oppError,
       cargoOptions: t.cargoTypes,
@@ -2749,6 +2771,7 @@ class Component extends DCLogic {
       setOppDestPort: (e) => this.setState({ oppDestPort: e.target.value, oppError: '' }),
       setOppCargo: (e) => this.setState({ oppCargo: e.target.value, oppProduct: '', oppError: '' }),
       setOppProduct: (e) => this.setState({ oppProduct: e.target.value }),
+      setOppEmail: (e) => this.setState({ oppEmail: e.target.value, oppError: '' }),
       setOppWeight: (e) => this.setState({ oppWeight: e.target.value, oppError: '' }),
       setUnitKg: () => this.setUnit('kg'),
       setUnitLb: () => this.setUnit('lb'),
@@ -2757,6 +2780,8 @@ class Component extends DCLogic {
       oppSubmit: (e) => this.submitOpportunity(e),
       oppOriginAttr: oppO ? oppO.lat + ',' + oppO.lon + ',' + oppO.name : '',
       oppDestAttr: oppD ? oppD.lat + ',' + oppD.lon + ',' + oppD.name : '',
+      oppOriginSummary: oppO ? oppO.name + (oppO.country ? ' (' + oppO.country + ')' : '') : '',
+      oppDestSummary: oppD ? oppD.name + (oppD.country ? ' (' + oppD.country + ')' : '') : '',
       oppStatusText: this.state.oppSent ? t.oppSent : (oppO && oppD ? t.oppStatusDrawn : t.oppStatusIdle),
       oppStatusDot: 'width:8px; height:8px; flex:none; display:block; border-radius:50%; background:' +
         (oppO && oppD ? '#64CCC5' : 'rgba(238,238,238,0.35)'),
