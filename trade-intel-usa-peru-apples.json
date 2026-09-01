@@ -1,0 +1,162 @@
+{
+  "generatedAt": "2026-09-01T16:23:33.810Z",
+  "source": "U.S. Census Bureau, International Trade Data API",
+  "sourceUrl": "https://www.census.gov/foreign-trade/",
+  "hsCode": "080810",
+  "hsDescription": "Fresh apples",
+  "exporter": "United States",
+  "importer": "Peru",
+  "unit": "USD",
+  "months": [
+    {
+      "month": "2024-01",
+      "valueMonthly": 1374897,
+      "valueYearToDate": 1374897
+    },
+    {
+      "month": "2024-02",
+      "valueMonthly": 1136634,
+      "valueYearToDate": 2511531
+    },
+    {
+      "month": "2024-03",
+      "valueMonthly": 1016683,
+      "valueYearToDate": 3528214
+    },
+    {
+      "month": "2024-04",
+      "valueMonthly": 1168290,
+      "valueYearToDate": 4696504
+    },
+    {
+      "month": "2024-05",
+      "valueMonthly": 3324895,
+      "valueYearToDate": 8021399
+    },
+    {
+      "month": "2024-06",
+      "valueMonthly": 622748,
+      "valueYearToDate": 8644147
+    },
+    {
+      "month": "2024-07",
+      "valueMonthly": 1447470,
+      "valueYearToDate": 10091617
+    },
+    {
+      "month": "2024-08",
+      "valueMonthly": 571951,
+      "valueYearToDate": 10663568
+    },
+    {
+      "month": "2024-09",
+      "valueMonthly": 460933,
+      "valueYearToDate": 11124501
+    },
+    {
+      "month": "2024-10",
+      "valueMonthly": 983471,
+      "valueYearToDate": 12107972
+    },
+    {
+      "month": "2024-11",
+      "valueMonthly": 2532205,
+      "valueYearToDate": 14640177
+    },
+    {
+      "month": "2024-12",
+      "valueMonthly": 1294255,
+      "valueYearToDate": 15934432
+    },
+    {
+      "month": "2025-01",
+      "valueMonthly": 2693627,
+      "valueYearToDate": 2693627
+    },
+    {
+      "month": "2025-02",
+      "valueMonthly": 1673198,
+      "valueYearToDate": 4366825
+    },
+    {
+      "month": "2025-03",
+      "valueMonthly": 2000766,
+      "valueYearToDate": 6367591
+    },
+    {
+      "month": "2025-04",
+      "valueMonthly": 2314113,
+      "valueYearToDate": 8681704
+    },
+    {
+      "month": "2025-05",
+      "valueMonthly": 1005547,
+      "valueYearToDate": 9687251
+    },
+    {
+      "month": "2025-06",
+      "valueMonthly": 1005521,
+      "valueYearToDate": 10692772
+    },
+    {
+      "month": "2025-07",
+      "valueMonthly": 1321635,
+      "valueYearToDate": 12014407
+    },
+    {
+      "month": "2025-08",
+      "valueMonthly": 1123254,
+      "valueYearToDate": 13137661
+    },
+    {
+      "month": "2025-09",
+      "valueMonthly": 2102191,
+      "valueYearToDate": 15239852
+    },
+    {
+      "month": "2025-10",
+      "valueMonthly": 1813343,
+      "valueYearToDate": 17053195
+    },
+    {
+      "month": "2025-11",
+      "valueMonthly": 2520128,
+      "valueYearToDate": 19573323
+    },
+    {
+      "month": "2025-12",
+      "valueMonthly": 1508767,
+      "valueYearToDate": 21082090
+    },
+    {
+      "month": "2026-01",
+      "valueMonthly": 2063930,
+      "valueYearToDate": 2063930
+    },
+    {
+      "month": "2026-02",
+      "valueMonthly": 1878717,
+      "valueYearToDate": 3942647
+    },
+    {
+      "month": "2026-03",
+      "valueMonthly": 1495800,
+      "valueYearToDate": 5438447
+    },
+    {
+      "month": "2026-04",
+      "valueMonthly": 2564384,
+      "valueYearToDate": 8002831
+    },
+    {
+      "month": "2026-05",
+      "valueMonthly": 3153318,
+      "valueYearToDate": 11156149
+    },
+    {
+      "month": "2026-06",
+      "valueMonthly": 2928646,
+      "valueYearToDate": 14084795
+    }
+  ]
+}
