@@ -1,0 +1,38 @@
+name: Update trade intelligence data
+
+on:
+  schedule:
+    # 10th of every month at 14:00 UTC — Census releases monthly export data with
+    # roughly a 5-6 week lag, so by the 10th the prior-prior month is final.
+    - cron: "0 14 10 * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Fetch Census trade data
+        env:
+          CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
+        run: node scripts/fetch-trade-intel.mjs
+
+      - name: Commit updated data if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- trade-intel-usa-peru-apples.json; then
+            echo "No changes to trade-intel-usa-peru-apples.json"
+          else
+            git add trade-intel-usa-peru-apples.json
+            git commit -m "chore: update USA→Peru fresh-apple trade data (automated)"
+            git push
+          fi
