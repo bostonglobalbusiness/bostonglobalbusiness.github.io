@@ -19,11 +19,12 @@ const E_COMMODITY = "080810"; // fresh apples, HS6
 const COMM_LVL = "HS6";
 const OUTPUT_FILE = new URL("../trade-intel-usa-peru-apples.json", import.meta.url);
 
-// Census releases monthly export data ~5-6 weeks after month end, so treat
-// anything less than 2 full months old as "not yet final" and skip it.
+// Census releases monthly export data ~5-6 weeks after month end, but the
+// exact publish date varies — 2 months of lag wasn't always enough in
+// practice, so use 3 to stay safely behind the actual release schedule.
 function monthsToFetch() {
   const now = new Date();
-  const safeLatest = new Date(now.getFullYear(), now.getMonth() - 2, 1);
+  const safeLatest = new Date(now.getFullYear(), now.getMonth() - 3, 1);
   const start = new Date(safeLatest.getFullYear() - 2, 0, 1); // Jan, two years back
 
   const months = [];
