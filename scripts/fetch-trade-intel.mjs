@@ -7,7 +7,21 @@
 // CTY_CODE=3330 is Peru's Schedule C country code.
 // COMM_LVL=HS6 selects the commodity at the 6-digit HS level.
 
-import { writeFile } from "node:fs/promises";
+import { writeFile, readFile } from "node:fs/promises";
+
+async function readPreviousMonths(outputFile) {
+  try {
+    const text = await readFile(outputFile, "utf8");
+    const data = JSON.parse(text);
+    const byMonth = {};
+    (data.months || []).forEach((m) => {
+      if (!m.error) byMonth[m.month] = m;
+    });
+    return byMonth;
+  } catch {
+    return {}; // no previous file yet, or unreadable — start fresh
+  }
+}
 
 const API_KEY = process.env.CENSUS_API_KEY;
 if (!API_KEY) {
@@ -111,22 +125,50 @@ async function fetchMonth(time, hsCode) {
   };
 }
 
+// Census intermittently returns an HTML (non-JSON) response under sustained
+// request volume — not a real "no data" case, just a transient rate limit.
+// Retry a few times with growing backoff before giving up on a month.
+async function fetchMonthWithRetry(time, hsCode, attempts = 4) {
+  let lastErr;
+  for (let i = 0; i < attempts; i++) {
+    try {
+      return await fetchMonth(time, hsCode);
+    } catch (err) {
+      lastErr = err;
+      if (i < attempts - 1) {
+        const backoffMs = 2000 * (i + 1);
+        console.log(`    retrying ${time} in ${backoffMs}ms (attempt ${i + 2}/${attempts})...`);
+        await new Promise((r) => setTimeout(r, backoffMs));
+      }
+    }
+  }
+  throw lastErr;
+}
+
 async function fetchCommodity(commodity, months) {
   console.log(`\n=== ${commodity.hsDescription} (HS ${commodity.hsCode}) ===`);
   console.log(`Fetching ${months.length} months: ${months[0]} .. ${months[months.length - 1]}`);
 
+  const previous = await readPreviousMonths(commodity.outputFile);
+
   const results = [];
   for (const month of months) {
     try {
-      const row = await fetchMonth(month, commodity.hsCode);
+      const row = await fetchMonthWithRetry(month, commodity.hsCode);
       results.push(row);
       console.log(`  ${month}: monthly=${row.valueMonthly} ytd=${row.valueYearToDate}`);
     } catch (err) {
-      console.error(`  ${month}: FAILED — ${err.message}`);
-      results.push({ month, valueMonthly: null, valueYearToDate: null, error: true });
+      if (previous[month]) {
+        console.error(`  ${month}: FAILED — ${err.message} (keeping previous value)`);
+        results.push(previous[month]);
+      } else {
+        console.error(`  ${month}: FAILED — ${err.message}`);
+        results.push({ month, valueMonthly: null, valueYearToDate: null, error: true });
+      }
     }
-    // Be polite to the API — small delay between calls.
-    await new Promise((r) => setTimeout(r, 300));
+    // Be polite to the API — delay between calls (raised from 300ms after
+    // seeing intermittent rate-limit failures across a 6-commodity run).
+    await new Promise((r) => setTimeout(r, 900));
   }
 
   const output = {
