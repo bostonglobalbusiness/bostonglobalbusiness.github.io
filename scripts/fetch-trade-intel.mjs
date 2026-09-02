@@ -1,10 +1,11 @@
-// Fetches monthly USA -> Peru fresh-apple (HS 080810) export values from the
-// U.S. Census Bureau International Trade API and writes a static JSON file
-// the site reads client-side. Run by .github/workflows/update-trade-intel.yml.
+// Fetches monthly USA -> Peru export values (fresh apples + fresh oranges)
+// from the U.S. Census Bureau International Trade API and writes one static
+// JSON file per commodity for the site to read client-side.
+// Run by .github/workflows/update-trade-intel.yml.
 //
 // Docs: https://api.census.gov/data/timeseries/intltrade/exports/hs/examples.html
 // CTY_CODE=3330 is Peru's Schedule C country code.
-// COMM_LVL=HS6 + E_COMMODITY=080810 selects fresh apples specifically.
+// COMM_LVL=HS6 selects the commodity at the 6-digit HS level.
 
 import { writeFile } from "node:fs/promises";
 
@@ -15,9 +16,20 @@ if (!API_KEY) {
 }
 
 const CTY_CODE = "3330"; // Peru
-const E_COMMODITY = "080810"; // fresh apples, HS6
 const COMM_LVL = "HS6";
-const OUTPUT_FILE = new URL("../trade-intel-usa-peru-apples.json", import.meta.url);
+
+const COMMODITIES = [
+  {
+    hsCode: "080810",
+    hsDescription: "Fresh apples",
+    outputFile: new URL("../trade-intel-usa-peru-apples.json", import.meta.url),
+  },
+  {
+    hsCode: "080510",
+    hsDescription: "Fresh oranges",
+    outputFile: new URL("../trade-intel-usa-peru-oranges.json", import.meta.url),
+  },
+];
 
 // Census releases monthly export data ~5-6 weeks after month end, but the
 // exact publish date varies — 2 months of lag wasn't always enough in
@@ -38,12 +50,12 @@ function monthsToFetch() {
   return months;
 }
 
-async function fetchMonth(time) {
+async function fetchMonth(time, hsCode) {
   const url = new URL("https://api.census.gov/data/timeseries/intltrade/exports/hs");
   url.searchParams.set("get", "ALL_VAL_MO,ALL_VAL_YR");
   url.searchParams.set("time", time);
   url.searchParams.set("CTY_CODE", CTY_CODE);
-  url.searchParams.set("E_COMMODITY", E_COMMODITY);
+  url.searchParams.set("E_COMMODITY", hsCode);
   url.searchParams.set("COMM_LVL", COMM_LVL);
   url.searchParams.set("key", API_KEY);
 
@@ -79,14 +91,14 @@ async function fetchMonth(time) {
   };
 }
 
-async function main() {
-  const months = monthsToFetch();
+async function fetchCommodity(commodity, months) {
+  console.log(`\n=== ${commodity.hsDescription} (HS ${commodity.hsCode}) ===`);
   console.log(`Fetching ${months.length} months: ${months[0]} .. ${months[months.length - 1]}`);
 
   const results = [];
   for (const month of months) {
     try {
-      const row = await fetchMonth(month);
+      const row = await fetchMonth(month, commodity.hsCode);
       results.push(row);
       console.log(`  ${month}: monthly=${row.valueMonthly} ytd=${row.valueYearToDate}`);
     } catch (err) {
@@ -101,20 +113,30 @@ async function main() {
     generatedAt: new Date().toISOString(),
     source: "U.S. Census Bureau, International Trade Data API",
     sourceUrl: "https://www.census.gov/foreign-trade/",
-    hsCode: E_COMMODITY,
-    hsDescription: "Fresh apples",
+    hsCode: commodity.hsCode,
+    hsDescription: commodity.hsDescription,
     exporter: "United States",
     importer: "Peru",
     unit: "USD",
     months: results,
   };
 
-  await writeFile(OUTPUT_FILE, JSON.stringify(output, null, 2) + "\n", "utf8");
-  console.log(`Wrote ${OUTPUT_FILE.pathname}`);
+  await writeFile(commodity.outputFile, JSON.stringify(output, null, 2) + "\n", "utf8");
+  console.log(`Wrote ${commodity.outputFile.pathname}`);
 
-  const failedCount = results.filter((r) => r.error).length;
-  if (failedCount > 0) {
-    console.error(`${failedCount} month(s) failed to fetch — check logs above.`);
+  return results.filter((r) => r.error).length;
+}
+
+async function main() {
+  const months = monthsToFetch();
+  let totalFailed = 0;
+
+  for (const commodity of COMMODITIES) {
+    totalFailed += await fetchCommodity(commodity, months);
+  }
+
+  if (totalFailed > 0) {
+    console.error(`\n${totalFailed} month(s) failed to fetch across all commodities — check logs above.`);
     process.exit(1);
   }
 }
