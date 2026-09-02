@@ -35,8 +35,8 @@ const COMMODITIES = [
     outputFile: new URL("../trade-intel-usa-peru-pears.json", import.meta.url),
   },
   {
-    hsCode: "080920",
-    hsDescription: "Fresh cherries",
+    hsCode: "080929",
+    hsDescription: "Fresh sweet cherries",
     outputFile: new URL("../trade-intel-usa-peru-cherries.json", import.meta.url),
   },
   {
