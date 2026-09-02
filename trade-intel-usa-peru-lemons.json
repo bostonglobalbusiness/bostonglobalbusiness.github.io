@@ -1,0 +1,173 @@
+{
+  "generatedAt": "2026-09-02T05:15:26.168Z",
+  "source": "U.S. Census Bureau, International Trade Data API",
+  "sourceUrl": "https://www.census.gov/foreign-trade/",
+  "hsCode": "080550",
+  "hsDescription": "Fresh lemons",
+  "exporter": "United States",
+  "importer": "Peru",
+  "unit": "USD",
+  "months": [
+    {
+      "month": "2024-01",
+      "valueMonthly": 4284,
+      "valueYearToDate": 4284
+    },
+    {
+      "month": "2024-02",
+      "valueMonthly": 0,
+      "valueYearToDate": 4284
+    },
+    {
+      "month": "2024-03",
+      "valueMonthly": 0,
+      "valueYearToDate": 4284
+    },
+    {
+      "month": "2024-04",
+      "valueMonthly": 0,
+      "valueYearToDate": 4284
+    },
+    {
+      "month": "2024-05",
+      "valueMonthly": 0,
+      "valueYearToDate": 4284
+    },
+    {
+      "month": "2024-06",
+      "valueMonthly": 0,
+      "valueYearToDate": 4284
+    },
+    {
+      "month": "2024-07",
+      "valueMonthly": 0,
+      "valueYearToDate": 4284
+    },
+    {
+      "month": "2024-08",
+      "valueMonthly": 0,
+      "valueYearToDate": 4284
+    },
+    {
+      "month": "2024-09",
+      "valueMonthly": 0,
+      "valueYearToDate": 4284
+    },
+    {
+      "month": "2024-10",
+      "valueMonthly": 0,
+      "valueYearToDate": 4284
+    },
+    {
+      "month": "2024-11",
+      "valueMonthly": 0,
+      "valueYearToDate": 4284
+    },
+    {
+      "month": "2024-12",
+      "valueMonthly": 0,
+      "valueYearToDate": 4284
+    },
+    {
+      "month": "2025-01",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-02",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-03",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-04",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-05",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-06",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-07",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-08",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-09",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-10",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-11",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-12",
+      "valueMonthly": 4662,
+      "valueYearToDate": 4662
+    },
+    {
+      "month": "2026-01",
+      "valueMonthly": 3559,
+      "valueYearToDate": 3559
+    },
+    {
+      "month": "2026-02",
+      "valueMonthly": 7560,
+      "valueYearToDate": 11119
+    },
+    {
+      "month": "2026-03",
+      "valueMonthly": 3307,
+      "valueYearToDate": 14426
+    },
+    {
+      "month": "2026-04",
+      "valueMonthly": 17766,
+      "valueYearToDate": 32192
+    },
+    {
+      "month": "2026-05",
+      "valueMonthly": 0,
+      "valueYearToDate": 32192
+    },
+    {
+      "month": "2026-06",
+      "valueMonthly": 0,
+      "valueYearToDate": 32192
+    }
+  ]
+}

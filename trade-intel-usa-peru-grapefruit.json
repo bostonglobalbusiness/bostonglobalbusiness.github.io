@@ -1,0 +1,163 @@
+{
+  "generatedAt": "2026-09-02T05:15:50.241Z",
+  "source": "U.S. Census Bureau, International Trade Data API",
+  "sourceUrl": "https://www.census.gov/foreign-trade/",
+  "hsCode": "080540",
+  "hsDescription": "Fresh grapefruit",
+  "exporter": "United States",
+  "importer": "Peru",
+  "unit": "USD",
+  "months": [
+    {
+      "month": "2024-01",
+      "valueMonthly": 6287,
+      "valueYearToDate": 6287
+    },
+    {
+      "month": "2024-02",
+      "valueMonthly": 17001,
+      "valueYearToDate": 23288
+    },
+    {
+      "month": "2024-03",
+      "valueMonthly": 8033,
+      "valueYearToDate": 31321
+    },
+    {
+      "month": "2024-04",
+      "valueMonthly": 24098,
+      "valueYearToDate": 55419
+    },
+    {
+      "month": "2024-05",
+      "valueMonthly": 0,
+      "valueYearToDate": 55419
+    },
+    {
+      "month": "2024-06",
+      "valueMonthly": 0,
+      "valueYearToDate": 55419
+    },
+    {
+      "month": "2024-07",
+      "valueMonthly": 0,
+      "valueYearToDate": 55419
+    },
+    {
+      "month": "2024-08",
+      "valueMonthly": 0,
+      "valueYearToDate": 55419
+    },
+    {
+      "month": "2024-09",
+      "valueMonthly": 0,
+      "valueYearToDate": 55419
+    },
+    {
+      "month": "2024-10",
+      "valueMonthly": 0,
+      "valueYearToDate": 55419
+    },
+    {
+      "month": "2024-11",
+      "valueMonthly": 0,
+      "valueYearToDate": 55419
+    },
+    {
+      "month": "2024-12",
+      "valueMonthly": 4374,
+      "valueYearToDate": 59793
+    },
+    {
+      "month": "2025-01",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-02",
+      "valueMonthly": 3213,
+      "valueYearToDate": 3213
+    },
+    {
+      "month": "2025-03",
+      "valueMonthly": 3276,
+      "valueYearToDate": 6489
+    },
+    {
+      "month": "2025-04",
+      "valueMonthly": 0,
+      "valueYearToDate": 6489
+    },
+    {
+      "month": "2025-05",
+      "valueMonthly": 0,
+      "valueYearToDate": 6489
+    },
+    {
+      "month": "2025-06",
+      "valueMonthly": 0,
+      "valueYearToDate": 6489
+    },
+    {
+      "month": "2025-07",
+      "valueMonthly": 0,
+      "valueYearToDate": 6489
+    },
+    {
+      "month": "2025-08",
+      "valueMonthly": 0,
+      "valueYearToDate": 6489
+    },
+    {
+      "month": "2025-09",
+      "valueMonthly": 0,
+      "valueYearToDate": 6489
+    },
+    {
+      "month": "2025-10",
+      "valueMonthly": 0,
+      "valueYearToDate": 6489
+    },
+    {
+      "month": "2025-11",
+      "valueMonthly": 0,
+      "valueYearToDate": 6489
+    },
+    {
+      "month": "2025-12",
+      "valueMonthly": 11277,
+      "valueYearToDate": 17766
+    },
+    {
+      "month": "2026-01",
+      "valueMonthly": 8016,
+      "valueYearToDate": 8016
+    },
+    {
+      "month": "2026-02",
+      "valueMonthly": 3212,
+      "valueYearToDate": 11228
+    },
+    {
+      "month": "2026-03",
+      "valueMonthly": 2898,
+      "valueYearToDate": 14126
+    },
+    {
+      "month": "2026-04",
+      "valueMonthly": 22471,
+      "valueYearToDate": 36597
+    },
+    {
+      "month": "2026-05",
+      "valueMonthly": 0,
+      "valueYearToDate": 36597
+    },
+    {
+      "month": "2026-06",
+      "valueMonthly": 0,
+      "valueYearToDate": 36597
+    }
+  ]
+}

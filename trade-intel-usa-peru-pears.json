@@ -1,0 +1,177 @@
+{
+  "generatedAt": "2026-09-02T05:14:14.538Z",
+  "source": "U.S. Census Bureau, International Trade Data API",
+  "sourceUrl": "https://www.census.gov/foreign-trade/",
+  "hsCode": "080830",
+  "hsDescription": "Fresh pears",
+  "exporter": "United States",
+  "importer": "Peru",
+  "unit": "USD",
+  "months": [
+    {
+      "month": "2024-01",
+      "valueMonthly": 19600,
+      "valueYearToDate": 19600
+    },
+    {
+      "month": "2024-02",
+      "valueMonthly": 0,
+      "valueYearToDate": 19600
+    },
+    {
+      "month": "2024-03",
+      "valueMonthly": 0,
+      "valueYearToDate": 19600
+    },
+    {
+      "month": "2024-04",
+      "valueMonthly": 0,
+      "valueYearToDate": 19600
+    },
+    {
+      "month": "2024-05",
+      "valueMonthly": 0,
+      "valueYearToDate": 19600
+    },
+    {
+      "month": "2024-06",
+      "valueMonthly": 0,
+      "valueYearToDate": 19600
+    },
+    {
+      "month": "2024-07",
+      "valueMonthly": 0,
+      "valueYearToDate": 19600
+    },
+    {
+      "month": "2024-08",
+      "valueMonthly": 0,
+      "valueYearToDate": 19600
+    },
+    {
+      "month": "2024-09",
+      "valueMonthly": 0,
+      "valueYearToDate": 19600
+    },
+    {
+      "month": "2024-10",
+      "valueMonthly": 0,
+      "valueYearToDate": 19600
+    },
+    {
+      "month": "2024-11",
+      "valueMonthly": 39925,
+      "valueYearToDate": 59525
+    },
+    {
+      "month": "2024-12",
+      "valueMonthly": 0,
+      "valueYearToDate": 59525
+    },
+    {
+      "month": "2025-01",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-02",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-03",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-04",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-05",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-06",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-07",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-08",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-09",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2025-10",
+      "valueMonthly": 33544,
+      "valueYearToDate": 33544
+    },
+    {
+      "month": "2025-11",
+      "valueMonthly": 148091,
+      "valueYearToDate": 181635
+    },
+    {
+      "month": "2025-12",
+      "valueMonthly": 30964,
+      "valueYearToDate": 212599
+    },
+    {
+      "month": "2026-01",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2026-02",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2026-03",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2026-04",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2026-05",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    },
+    {
+      "month": "2026-06",
+      "valueMonthly": null,
+      "valueYearToDate": null,
+      "error": true
+    }
+  ]
+}
