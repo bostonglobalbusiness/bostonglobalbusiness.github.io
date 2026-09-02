@@ -29,6 +29,26 @@ const COMMODITIES = [
     hsDescription: "Fresh oranges",
     outputFile: new URL("../trade-intel-usa-peru-oranges.json", import.meta.url),
   },
+  {
+    hsCode: "080830",
+    hsDescription: "Fresh pears",
+    outputFile: new URL("../trade-intel-usa-peru-pears.json", import.meta.url),
+  },
+  {
+    hsCode: "080920",
+    hsDescription: "Fresh cherries",
+    outputFile: new URL("../trade-intel-usa-peru-cherries.json", import.meta.url),
+  },
+  {
+    hsCode: "080550",
+    hsDescription: "Fresh lemons",
+    outputFile: new URL("../trade-intel-usa-peru-lemons.json", import.meta.url),
+  },
+  {
+    hsCode: "080540",
+    hsDescription: "Fresh grapefruit",
+    outputFile: new URL("../trade-intel-usa-peru-grapefruit.json", import.meta.url),
+  },
 ];
 
 // Census releases monthly export data ~5-6 weeks after month end, but the
