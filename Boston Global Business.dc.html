@@ -102,7 +102,7 @@
           <a href="#rutas" style="color:#EEEEEE; font-size:15px; font-weight:500; letter-spacing:0.02em; white-space:nowrap" style-hover="color:#64CCC5">{{ t.navRoutesNet }}</a>
           <a href="#tracking" style="color:#EEEEEE; font-size:15px; font-weight:500; letter-spacing:0.02em; white-space:nowrap" style-hover="color:#64CCC5">{{ t.navTracking }}</a>
           <a href="#contacto" style="color:#EEEEEE; font-size:15px; font-weight:500; letter-spacing:0.02em; white-space:nowrap" style-hover="color:#64CCC5">{{ t.navContact }}</a>
-          <a href="#portal" onClick="{{ openPortal }}" style="color:rgba(238,238,238,0.72); font-size:15px; font-weight:600; letter-spacing:0.02em; white-space:nowrap; padding-left:clamp(4px,0.5vw,12px)" style-hover="color:#64CCC5">{{ t.navLogin }}</a>
+          <a href="#portal" onClick="{{ openPortal }}" style="color:rgba(238,238,238,0.72); font-size:15px; font-weight:600; letter-spacing:0.02em; white-space:nowrap; padding-left:clamp(4px,0.5vw,12px); padding-right:clamp(20px,2vw,32px)" style-hover="color:#64CCC5">{{ t.navLogin }}</a>
         </nav>
 
         <div style="display:flex; align-items:center; justify-self:end; gap:clamp(10px,0.9vw,16px)">
@@ -848,6 +848,7 @@
       <div data-reveal style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:clamp(24px,3vw,32px)">
         <button type="button" onClick="{{ pickApples }}" style="{{ applesBtnStyle }}">{{ t.mktApples }}</button>
         <button type="button" onClick="{{ pickOranges }}" style="{{ orangesBtnStyle }}">{{ t.mktOranges }}</button>
+        <button type="button" onClick="{{ pickGrapefruit }}" style="{{ grapefruitBtnStyle }}">{{ t.mktGrapefruit }}</button>
       </div>
 
       <div style="display:grid; gap:clamp(14px,1.8vw,20px); grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); margin-bottom:clamp(20px,2.6vw,28px)">
@@ -885,9 +886,9 @@
             <sc-if value="{{ ch.hasRows }}" hint-placeholder-val="{{ false }}">
               <div style="display:grid; gap:0">
                 <sc-for list="{{ ch.rows }}" as="r" hint-placeholder-count="4">
-                  <div style="display:flex; justify-content:space-between; gap:16px; align-items:baseline; padding:15px 0; border-bottom:1px solid rgba(5,59,80,0.10)">
-                    <span style="font-size:16px; line-height:1.5; color:rgba(5,59,80,0.72)">{{ r.name }}</span>
-                    <span style="font-family:Montserrat,sans-serif; font-weight:700; font-size:20.5px; color:#176B87; text-align:right; white-space:nowrap">{{ r.value }}</span>
+                  <div style="display:flex; justify-content:space-between; gap:16px; align-items:center; padding:15px 0; border-bottom:1px solid rgba(5,59,80,0.10)">
+                    <span style="font-size:16px; line-height:1.5; color:rgba(5,59,80,0.72); flex:1 1 auto; min-width:0">{{ r.name }}</span>
+                    <span style="font-family:Montserrat,sans-serif; font-weight:700; font-size:20.5px; color:#176B87; text-align:right; flex:0 1 auto; min-width:0">{{ r.value }}</span>
                   </div>
                 </sc-for>
               </div>
@@ -1399,7 +1400,7 @@ const COPY = {
     evansVarietiesNote: 'Variedades según información pública del productor. La disponibilidad no está confirmada: consúltala para cada operación.',
     brandsTitle: 'Marcas que conectamos con tu mercado',
     brandsSub: 'Productores, marcas y líneas comerciales disponibles según producto, temporada y operación.',
-    brandsFilters: ['Todas', 'Manzanas', 'Naranjas', 'Kiwis', 'Peras'],
+    brandsFilters: ['Todas', 'Manzanas', 'Naranjas', 'Peras', 'Cerezas', 'Toronjas', 'Limones', 'Kiwis'],
     brandsEmpty: 'Todavía no hay productores con relación comercial verificada publicados en esta categoría. Boston Global Business publica un productor únicamente después de confirmar el acceso comercial y la autorización de uso de marca.',
     brandsLegal: 'No se reproducen logotipos de terceros sin autorización. Cada tarjeta se publica solo con estado de relación comercial verificado por Boston Global Business.',
     statusConsult: 'Consultar', statusSeason: 'Temporada', statusAvailable: 'Disponible', statusSubject: 'Sujeto a disponibilidad',
@@ -1513,6 +1514,7 @@ const COPY = {
     prodIntro: 'Boston Global Business trabaja estrechamente con productores, packing houses, transportistas, agentes de carga y operadores portuarios para coordinar la movilización internacional de fruta fresca desde Estados Unidos hacia Perú, manteniendo seguimiento permanente durante cada etapa de la operación.',
     prodOriginLabel: 'Origen', prodHsLabel: 'Categoría estadística',
     hsApple: 'HS 080810 – Manzanas frescas', hsOrange: 'HS 080510 – Naranjas frescas o secas',
+    hsPear: 'HS 080830 – Peras frescas', hsCherry: 'HS 080929 – Cerezas frescas', hsGrapefruit: 'HS 080540 – Toronjas frescas', hsLemon: 'HS 080550 – Limones frescos',
     products: [
       ['prod-naranja', 'Naranja U.S. Fancy', 'Premium Fresh Orange', 'U.S. FANCY QUALITY',
        'Fruta seleccionada para el mercado internacional, caracterizada por su presentación uniforme y calidad comercial.',
@@ -1528,7 +1530,27 @@ const COPY = {
        'Manzana de presentación comercial atractiva, color rojo intenso y perfil dulce, perteneciente a la familia comercial Red Delicious.',
        'Manzanas rojo intenso en presentación comercial para exportación',
        ['Rojo brillante a rojo oscuro', 'Dulce', 'Jugosa', 'Forma cónica característica', 'Presentación comercial atractiva'],
-       'Washington State University describe la Red Delicious como una manzana de color rojo brillante a rojo oscuro, dulce y jugosa.']
+       'Washington State University describe la Red Delicious como una manzana de color rojo brillante a rojo oscuro, dulce y jugosa.'],
+      ['prod-pera', 'Pera Bartlett / D’Anjou', 'Bartlett / D’Anjou Pear', 'PERA | BARTLETT · D’ANJOU',
+       'Pera de exportación cultivada en el noroeste de Estados Unidos, disponible en las variedades comerciales Bartlett (verde-amarilla, aromática) y D’Anjou (verde, textura firme, mayor vida de anaquel).',
+       'Peras de exportación en cajas o bandejas comerciales, variedades Bartlett y D’Anjou',
+       ['Piel lisa', 'Pulpa jugosa', 'Perfil dulce', 'Buen comportamiento en almacenamiento refrigerado', 'Presentación uniforme'],
+       'Variedades y descripciones comerciales según USA Pears (USA Pear Bureau).'],
+      ['prod-cereza', 'Cereza dulce Bing / Rainier', 'Sweet Cherry (Bing / Rainier)', 'CEREZA | BING · RAINIER',
+       'Cereza dulce de exportación, disponible en las variedades comerciales Bing (roja intensa, clásica) y Rainier (amarilla con blush rojo, perfil más delicado).',
+       'Cerezas dulces de exportación en clamshells o cajas comerciales, variedades Bing y Rainier',
+       ['Firme', 'Jugosa', 'Dulce', 'Piel brillante', 'Tallo verde fresco', 'Calibre comercial uniforme'],
+       'Variedades comerciales de cereza dulce (HS 080929) según Northwest Cherry Growers.'],
+      ['prod-toronja', 'Toronja Rio Red / Star Ruby', 'Grapefruit (Rio Red / Star Ruby)', 'TORONJA | RIO RED · STAR RUBY',
+       'Toronja (pomelo) de exportación cultivada en California, variedades de pulpa roja Rio Red y Star Ruby, reconocidas por su dulzura relativa frente a variedades más ácidas.',
+       'Toronjas de pulpa roja en cajas o bins comerciales de exportación',
+       ['Pulpa roja intensa', 'Perfil dulce-ácido equilibrado', 'Piel lisa', 'Buen tamaño comercial', 'Presentación uniforme'],
+       'Variedades comerciales de toronja de pulpa roja cultivadas en California.'],
+      ['prod-limon', 'Limón Eureka / Lisbon', 'Lemon (Eureka / Lisbon)', 'LIMÓN | EUREKA · LISBON',
+       'Limón de exportación cultivado en California, variedades comerciales Eureka y Lisbon, ambas de alta acidez y disponibilidad prácticamente todo el año.',
+       'Limones amarillos de exportación en cajas comerciales',
+       ['Piel amarilla lisa', 'Alta acidez', 'Jugoso', 'Disponibilidad todo el año', 'Presentación comercial uniforme'],
+       'Variedades comerciales de limón cultivadas en California.']
     ],
     flowLabel: 'CONTINUIDAD LOGÍSTICA',
     flowText: 'Coordinamos cada etapa de la operación para que el producto mantenga la trazabilidad y continuidad logística desde origen hasta destino.',
@@ -1536,7 +1558,7 @@ const COPY = {
     mktEyebrow: 'USA → PERÚ: EL MERCADO EN CIFRAS',
     mktTitle: 'Inteligencia comercial de fruta fresca',
     mktSub: 'Datos reales para comprender el comportamiento del comercio de fruta fresca entre Estados Unidos y Perú.',
-    mktApples: 'Manzanas', mktOranges: 'Naranjas',
+    mktApples: 'Manzanas', mktOranges: 'Naranjas', mktGrapefruit: 'Toronjas',
     monthShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
     pendingBadge: 'DATO OFICIAL EN ACTUALIZACIÓN',
     methodLabel: 'Nota metodológica:',
@@ -1547,14 +1569,16 @@ const COPY = {
       ['IMPORTACIONES DE PERÚ 2025 · EE. UU.', 'US$ 22.9 M', 'Segundo origen del mercado peruano, detrás de Chile (US$ 25.0 M). OEC, 2025.'],
       ['ENERO 2026 · EE. UU.', 'US$ 1.99 M', 'Principal origen de la manzana fresca importada por Perú en enero 2026. OEC.'],
       ['CATEGORÍA ESTADÍSTICA', 'HS 080810', 'Manzanas frescas. Incluye Granny Smith, Red Delicious, Topred y otras variedades.'],
-      ['EXPORTACIONES USA → PERÚ · ENE–JUN 2026', 'Dato oficial en actualización', 'Requiere conexión con U.S. Census Bureau – International Trade.'],
+      ['EXPORTACIONES USA → PERÚ · ENE–JUN 2026', 'Dato oficial en actualización', 'Requiere conexión con U.S. Census Bureau – International Trade.', 'accumulatedKpi'],
       ['ÚLTIMA ACTUALIZACIÓN OFICIAL', 'Junio 2026', 'El dato de julio 2026 se publica el 3 de septiembre de 2026.']
     ],
+    kpiAccumulatedNote: 'Acumulado oficial enero–junio {year}. Fuente: U.S. Census Bureau.',
+    kpiJanuaryNote: 'Valor FOB de exportaciones de EE. UU. a Perú en enero de {year}. Fuente: U.S. Census Bureau.',
     kpisOranges: [
-      ['PRECIO UNITARIO PROMEDIO', 'US$ 1.776 /kg', 'Mayo 2026. Señal de precio observada por Tridge.'],
-      ['VARIACIÓN INTERANUAL DEL PRECIO', '+12.19 %', 'Mayo 2026 frente al mismo mes del año anterior. Tridge.'],
-      ['TRANSACCIONES OBSERVADAS', '23', 'Mayo 2026. Estados Unidos fue el único origen observado en ese conjunto de datos.'],
+      ['IMPORTACIONES DE PERÚ 2025 · EE. UU.', 'US$ 3.82 M', 'Principal origen del mercado peruano de naranja fresca (US$ 4.4 M importados en total). OEC, 2025.', 'staticKpi'],
+      ['ENERO 2026 · EE. UU.', 'Dato oficial en actualización', 'Requiere conexión con U.S. Census Bureau – International Trade.', 'januaryKpi'],
       ['CATEGORÍA ESTADÍSTICA', 'HS 080510', 'Naranjas frescas o secas. “U.S. Fancy” es una calidad comercial, no una partida arancelaria.'],
+      ['EXPORTACIONES USA → PERÚ · ENE–JUN 2026', 'Dato oficial en actualización', 'Requiere conexión con U.S. Census Bureau – International Trade.', 'accumulatedKpi'],
       ['ÚLTIMA ACTUALIZACIÓN OFICIAL', 'Junio 2026', 'El dato de julio 2026 se publica el 3 de septiembre de 2026.']
     ],
     chartsApples: [
@@ -1562,19 +1586,49 @@ const COPY = {
         bars: [['Chile', 25, 'US$ 25.0 M', false], ['Estados Unidos', 22.9, 'US$ 22.9 M', true], ['Argentina', 2.88, 'US$ 2.88 M', false], ['Portugal', 0.231, 'US$ 0.231 M', false], ['China', 0.0233, 'US$ 0.0233 M', false]] },
       { title: 'Orígenes de la manzana fresca importada por Perú – enero 2026', unit: 'Valor importado por Perú, en millones de US$', source: 'Fuente: OEC, enero 2026. Corresponde únicamente a ese mes; no es un total anual.',
         bars: [['Estados Unidos', 1.99, 'US$ 1.99 M', true], ['Chile', 0.39, 'US$ 0.390 M', false], ['Portugal', 0.05, 'US$ 0.050 M', false], ['China', 0.0234, 'US$ 0.0234 M', false]] },
-      { key: 'monthlyEvolution', title: 'Evolución mensual de las exportaciones USA → Perú', unit: 'Valor FOB (US$), enero–junio {yearA} frente a {yearB} · HS 080810',
+      { title: 'Indicador comercial – Manzana fresca USA → Perú', unit: 'Mayo 2026 · transacciones observadas por corredor', source: 'Fuente: Tridge – Fresh Apple Monthly Update, mayo 2026. Datos de transacciones observadas por Tridge. No representan necesariamente el valor total oficial de las exportaciones estadounidenses.',
+        rows: [['Estados Unidos → Perú', '163 transacciones'], ['Chile → Perú', '70 transacciones'], ['Argentina → Perú', '25 transacciones']] },
+      { key: 'monthlyEvolution', title: 'Evolución mensual de las exportaciones USA → Perú', unit: 'Valor FOB (US$), enero–junio · HS 080810',
+        titleTemplate: 'Evolución mensual de las exportaciones USA → Perú', unitTemplate: 'Valor FOB (US$), enero–junio {yearA} frente a {yearB} · HS 080810',
         source: 'Fuente: U.S. Census Bureau – International Trade.',
         pending: 'La serie mensual requiere consulta autenticada a la API del U.S. Census Bureau. No se muestran valores estimados: el gráfico se completará con los datos oficiales por mes y acumulados YTD.' },
-      { key: 'accumulated', title: 'Comparación acumulada Ene–Jun {yearA} vs Ene–Jun {yearB}', unit: 'Valor FOB (US$) · HS 080810',
+      { key: 'accumulated', title: 'Comparación acumulada del primer semestre', unit: 'Valor FOB (US$) · HS 080810',
+        titleTemplate: 'Comparación acumulada Ene–Jun {yearA} vs Ene–Jun {yearB}', unitTemplate: 'Valor FOB (US$) · HS 080810',
         source: 'Fuente: U.S. Census Bureau – International Trade.',
         pending: 'La variación interanual se calculará sobre los acumulados oficiales de ambos periodos. Comparar seis meses de 2026 contra el año completo 2025 sería estadísticamente incorrecto, por lo que no se publica ninguna cifra provisional.' }
     ],
     chartsOranges: [
-      { title: 'Indicador comercial – Naranja fresca USA → Perú', unit: 'Mayo 2026 · señales de mercado observadas', source: 'Fuente: Tridge – Peru Fresh Orange Monthly Update, mayo 2026. Datos de transacciones y señales de precio observadas por Tridge. No representan necesariamente el valor total oficial de las exportaciones estadounidenses.',
-        rows: [['Transacciones observadas', '23'], ['Origen observado', 'Estados Unidos (único)'], ['Precio unitario promedio', 'US$ 1.776 /kg'], ['Variación interanual del precio', '+12.19 %']] },
-      { title: 'Evolución mensual de las exportaciones USA → Perú', unit: 'Valor FOB (US$), enero–junio 2025 frente a 2026 · HS 080510',
-        source: 'Fuente prevista: U.S. Census Bureau – International Trade.',
-        pending: 'La serie mensual de naranja fresca requiere consulta autenticada a la API del U.S. Census Bureau. No se completan meses faltantes con datos estimados.' }
+      { title: 'Principales orígenes de las naranjas importadas por Perú – 2025', unit: 'Valor importado por Perú, en millones de US$', source: 'Fuente: Observatory of Economic Complexity (OEC), 2025.',
+        bars: [['Estados Unidos', 3.82, 'US$ 3.82 M', true], ['Chile', 0.527, 'US$ 0.527 M', false], ['España', 0.0439, 'US$ 0.0439 M', false]] },
+      { title: 'Indicador comercial – Naranja fresca USA → Perú', unit: 'Mayo 2026 · señales de mercado observadas', source: 'Fuente: Tridge – Fresh Orange Monthly Update, mayo 2026. Datos de transacciones y señales de precio observadas por Tridge. No representan necesariamente el valor total oficial de las exportaciones estadounidenses.',
+        rows: [['Transacciones observadas', '23'], ['Origen observado', 'Estados Unidos (único)'], ['Precio unitario promedio', 'US$ 1.835 /kg'], ['Variación interanual del precio', 'No verificable con el histórico disponible']] },
+      { key: 'monthlyEvolution', title: 'Evolución mensual de las exportaciones USA → Perú', unit: 'Valor FOB (US$), enero–junio · HS 080510',
+        titleTemplate: 'Evolución mensual de las exportaciones USA → Perú', unitTemplate: 'Valor FOB (US$), enero–junio {yearA} frente a {yearB} · HS 080510',
+        source: 'Fuente: U.S. Census Bureau – International Trade.',
+        pending: 'La serie mensual de naranja fresca requiere consulta autenticada a la API del U.S. Census Bureau. No se completan meses faltantes con datos estimados.' },
+      { key: 'accumulated', title: 'Comparación acumulada del primer semestre', unit: 'Valor FOB (US$) · HS 080510',
+        titleTemplate: 'Comparación acumulada Ene–Jun {yearA} vs Ene–Jun {yearB}', unitTemplate: 'Valor FOB (US$) · HS 080510',
+        source: 'Fuente: U.S. Census Bureau – International Trade.',
+        pending: 'La variación interanual se calculará sobre los acumulados oficiales de ambos periodos. Comparar seis meses de 2026 contra el año completo 2025 sería estadísticamente incorrecto, por lo que no se publica ninguna cifra provisional.' }
+    ],
+    kpisGrapefruit: [
+      ['IMPORTACIONES DE PERÚ 2025 · EE. UU.', 'US$ 39.7 K', 'Principal origen del mercado peruano de toronja (US$ 44 K importados en total en 2025). OEC, 2025.'],
+      ['ENERO 2026 · EE. UU.', 'Dato oficial en actualización', 'Requiere conexión con U.S. Census Bureau – International Trade.', 'januaryKpi'],
+      ['CATEGORÍA ESTADÍSTICA', 'HS 080540', 'Toronjas frescas o secas, incluidos pomelos. Incluye variedades como Rio Red y Star Ruby.'],
+      ['EXPORTACIONES USA → PERÚ · ENE–JUN 2026', 'Dato oficial en actualización', 'Requiere conexión con U.S. Census Bureau – International Trade.', 'accumulatedKpi'],
+      ['ÚLTIMA ACTUALIZACIÓN OFICIAL', 'Junio 2026', 'El dato de julio 2026 se publica el 3 de septiembre de 2026.']
+    ],
+    chartsGrapefruit: [
+      { title: 'Principales orígenes de las toronjas importadas por Perú – 2025', unit: 'Valor importado por Perú, en millones de US$', source: 'Fuente: Observatory of Economic Complexity (OEC), 2025.',
+        bars: [['Estados Unidos', 0.0397, 'US$ 39.7 K', true], ['China', 0.00362, 'US$ 3.62 K', false], ['Chile', 0.000756, 'US$ 756', false]] },
+      { key: 'monthlyEvolution', title: 'Evolución mensual de las exportaciones USA → Perú', unit: 'Valor FOB (US$), enero–junio · HS 080540',
+        titleTemplate: 'Evolución mensual de las exportaciones USA → Perú', unitTemplate: 'Valor FOB (US$), enero–junio {yearA} frente a {yearB} · HS 080540',
+        source: 'Fuente: U.S. Census Bureau – International Trade.',
+        pending: 'La serie mensual requiere consulta autenticada a la API del U.S. Census Bureau. No se muestran valores estimados: el gráfico se completará con los datos oficiales por mes y acumulados YTD.' },
+      { key: 'accumulated', title: 'Comparación acumulada del primer semestre', unit: 'Valor FOB (US$) · HS 080540',
+        titleTemplate: 'Comparación acumulada Ene–Jun {yearA} vs Ene–Jun {yearB}', unitTemplate: 'Valor FOB (US$) · HS 080540',
+        source: 'Fuente: U.S. Census Bureau – International Trade.',
+        pending: 'La variación interanual se calculará sobre los acumulados oficiales de ambos periodos. Comparar seis meses de 2026 contra el año completo 2025 sería estadísticamente incorrecto, por lo que no se publica ninguna cifra provisional.' }
     ],
     ctaFruitTitle: '¿Necesitas importar fruta fresca desde Estados Unidos?',
     ctaFruitText: 'Boston Global Business coordina la documentación, transporte y seguimiento de tu cargamento desde el proveedor en Estados Unidos hasta su destino en Perú.',
@@ -1713,7 +1767,7 @@ const COPY = {
     evansVarietiesNote: 'Varieties per the grower\'s public information. Availability is not confirmed: ask about it for each operation.',
     brandsTitle: 'Brands we connect with your market',
     brandsSub: 'Growers, brands and commercial lines available depending on product, season and operation.',
-    brandsFilters: ['All', 'Apples', 'Oranges', 'Kiwis', 'Pears'],
+    brandsFilters: ['All', 'Apples', 'Oranges', 'Pears', 'Cherries', 'Grapefruit', 'Lemons', 'Kiwis'],
     brandsEmpty: 'No growers with a verified commercial relationship are published in this category yet. Boston Global Business publishes a grower only after confirming commercial access and brand use authorization.',
     brandsLegal: 'Third-party logos are not reproduced without authorization. Each card is published only with a relationship status verified by Boston Global Business.',
     statusConsult: 'Ask', statusSeason: 'In season', statusAvailable: 'Available', statusSubject: 'Subject to availability',
@@ -1827,6 +1881,7 @@ const COPY = {
     prodIntro: 'Boston Global Business works closely with growers, packing houses, carriers, freight forwarders and port operators to coordinate the international movement of fresh fruit from the United States to Peru, keeping permanent tracking through every stage of the operation.',
     prodOriginLabel: 'Origin', prodHsLabel: 'Statistical category',
     hsApple: 'HS 080810 – Apples, fresh', hsOrange: 'HS 080510 – Oranges, fresh or dried',
+    hsPear: 'HS 080830 – Pears, fresh', hsCherry: 'HS 080929 – Cherries, fresh', hsGrapefruit: 'HS 080540 – Grapefruit, fresh', hsLemon: 'HS 080550 – Lemons, fresh',
     products: [
       ['prod-naranja', 'U.S. Fancy Orange', 'Premium Fresh Orange', 'U.S. FANCY QUALITY',
        'Fruit selected for the international market, characterized by uniform presentation and commercial quality.',
@@ -1842,7 +1897,27 @@ const COPY = {
        'An apple with attractive commercial presentation, deep red colour and sweet profile, belonging to the Red Delicious commercial family.',
        'Deep red apples in commercial export presentation',
        ['Bright to dark red', 'Sweet', 'Juicy', 'Characteristic conical shape', 'Attractive commercial presentation'],
-       'Washington State University describes Red Delicious as a bright to dark red, sweet and juicy apple.']
+       'Washington State University describes Red Delicious as a bright to dark red, sweet and juicy apple.'],
+      ['prod-pera', 'Bartlett / D\u2019Anjou Pear', 'Bartlett / D\u2019Anjou Pear', 'PEAR | BARTLETT \u00b7 D\u2019ANJOU',
+       'Export pear grown in the northwestern United States, available in the commercial varieties Bartlett (green-yellow, aromatic) and D\u2019Anjou (green, firm texture, longer shelf life).',
+       'Export pears in commercial boxes or trays, Bartlett and D\u2019Anjou varieties',
+       ['Smooth skin', 'Juicy flesh', 'Sweet profile', 'Good performance in refrigerated storage', 'Uniform presentation'],
+       'Varieties and commercial descriptions per USA Pears (USA Pear Bureau).'],
+      ['prod-cereza', 'Sweet Cherry (Bing / Rainier)', 'Sweet Cherry (Bing / Rainier)', 'CHERRY | BING \u00b7 RAINIER',
+       'Export sweet cherry, available in the commercial varieties Bing (deep red, classic) and Rainier (yellow with red blush, more delicate profile).',
+       'Export sweet cherries in clamshells or commercial boxes, Bing and Rainier varieties',
+       ['Firm', 'Juicy', 'Sweet', 'Glossy skin', 'Fresh green stem', 'Uniform commercial size'],
+       'Commercial sweet cherry varieties (HS 080929) per Northwest Cherry Growers.'],
+      ['prod-toronja', 'Rio Red / Star Ruby Grapefruit', 'Grapefruit (Rio Red / Star Ruby)', 'GRAPEFRUIT | RIO RED \u00b7 STAR RUBY',
+       'Export grapefruit grown in California, red-fleshed Rio Red and Star Ruby varieties, known for their relative sweetness compared to more acidic varieties.',
+       'Red-fleshed grapefruit in commercial export boxes or bins',
+       ['Deep red flesh', 'Balanced sweet-tart profile', 'Smooth skin', 'Good commercial size', 'Uniform presentation'],
+       'Commercial red-fleshed grapefruit varieties grown in California.'],
+      ['prod-limon', 'Eureka / Lisbon Lemon', 'Lemon (Eureka / Lisbon)', 'LEMON | EUREKA \u00b7 LISBON',
+       'Export lemon grown in California, commercial varieties Eureka and Lisbon, both highly acidic and available nearly year-round.',
+       'Yellow export lemons in commercial boxes',
+       ['Smooth yellow skin', 'High acidity', 'Juicy', 'Year-round availability', 'Uniform commercial presentation'],
+       'Commercial lemon varieties grown in California.']
     ],
     flowLabel: 'LOGISTICS CONTINUITY',
     flowText: 'We coordinate every stage of the operation so the product keeps its traceability and logistics continuity from origin to destination.',
@@ -1850,7 +1925,7 @@ const COPY = {
     mktEyebrow: 'USA → PERU: THE MARKET IN FIGURES',
     mktTitle: 'Fresh fruit trade intelligence',
     mktSub: 'Real data to understand the behaviour of fresh fruit trade between the United States and Peru.',
-    mktApples: 'Apples', mktOranges: 'Oranges',
+    mktApples: 'Apples', mktOranges: 'Oranges', mktGrapefruit: 'Grapefruit',
     monthShort: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
     pendingBadge: 'OFFICIAL DATA BEING UPDATED',
     methodLabel: 'Methodological note:',
@@ -1861,14 +1936,16 @@ const COPY = {
       ['PERU IMPORTS 2025 · UNITED STATES', 'US$ 22.9 M', 'Second origin of the Peruvian market, behind Chile (US$ 25.0 M). OEC, 2025.'],
       ['JANUARY 2026 · UNITED STATES', 'US$ 1.99 M', 'Leading origin of fresh apples imported by Peru in January 2026. OEC.'],
       ['STATISTICAL CATEGORY', 'HS 080810', 'Apples, fresh. Includes Granny Smith, Red Delicious, Topred and other varieties.'],
-      ['US → PERU EXPORTS · JAN–JUN 2026', 'Official data being updated', 'Requires a connection to U.S. Census Bureau – International Trade.'],
+      ['US → PERU EXPORTS · JAN–JUN 2026', 'Official data being updated', 'Requires a connection to U.S. Census Bureau – International Trade.', 'accumulatedKpi'],
       ['LATEST OFFICIAL UPDATE', 'June 2026', 'July 2026 data is released on 3 September 2026.']
     ],
+    kpiAccumulatedNote: 'Official cumulative January–June {year}. Source: U.S. Census Bureau.',
+    kpiJanuaryNote: 'FOB value of US exports to Peru in January {year}. Source: U.S. Census Bureau.',
     kpisOranges: [
-      ['AVERAGE UNIT PRICE', 'US$ 1.776 /kg', 'May 2026. Price signal observed by Tridge.'],
-      ['YEAR-ON-YEAR PRICE CHANGE', '+12.19 %', 'May 2026 against the same month a year earlier. Tridge.'],
-      ['OBSERVED TRANSACTIONS', '23', 'May 2026. The United States was the only origin observed in that data set.'],
+      ['PERU IMPORTS 2025 · UNITED STATES', 'US$ 3.82 M', 'Leading origin of the Peruvian fresh orange market (US$ 4.4 M imported in total). OEC, 2025.', 'staticKpi'],
+      ['JANUARY 2026 · UNITED STATES', 'Official data being updated', 'Requires a connection to U.S. Census Bureau – International Trade.', 'januaryKpi'],
       ['STATISTICAL CATEGORY', 'HS 080510', 'Oranges, fresh or dried. “U.S. Fancy” is a commercial quality, not a tariff line.'],
+      ['US → PERU EXPORTS · JAN–JUN 2026', 'Official data being updated', 'Requires a connection to U.S. Census Bureau – International Trade.', 'accumulatedKpi'],
       ['LATEST OFFICIAL UPDATE', 'June 2026', 'July 2026 data is released on 3 September 2026.']
     ],
     chartsApples: [
@@ -1876,19 +1953,49 @@ const COPY = {
         bars: [['Chile', 25, 'US$ 25.0 M', false], ['United States', 22.9, 'US$ 22.9 M', true], ['Argentina', 2.88, 'US$ 2.88 M', false], ['Portugal', 0.231, 'US$ 0.231 M', false], ['China', 0.0233, 'US$ 0.0233 M', false]] },
       { title: 'Origins of fresh apples imported by Peru – January 2026', unit: 'Value imported by Peru, in millions of US$', source: 'Source: OEC, January 2026. Covers that month only; it is not an annual total.',
         bars: [['United States', 1.99, 'US$ 1.99 M', true], ['Chile', 0.39, 'US$ 0.390 M', false], ['Portugal', 0.05, 'US$ 0.050 M', false], ['China', 0.0234, 'US$ 0.0234 M', false]] },
-      { key: 'monthlyEvolution', title: 'Monthly evolution of US → Peru exports', unit: 'FOB value (US$), January–June {yearA} against {yearB} · HS 080810',
+      { title: 'Trade indicator – Fresh apple USA → Peru', unit: 'May 2026 · observed transactions by corridor', source: 'Source: Tridge – Fresh Apple Monthly Update, May 2026. Transaction data observed by Tridge. It does not necessarily represent the total official value of US exports.',
+        rows: [['United States → Peru', '163 transactions'], ['Chile → Peru', '70 transactions'], ['Argentina → Peru', '25 transactions']] },
+      { key: 'monthlyEvolution', title: 'Monthly evolution of US → Peru exports', unit: 'FOB value (US$), January–June · HS 080810',
+        titleTemplate: 'Monthly evolution of US → Peru exports', unitTemplate: 'FOB value (US$), January–June {yearA} against {yearB} · HS 080810',
         source: 'Source: U.S. Census Bureau – International Trade.',
         pending: 'The monthly series requires an authenticated query to the U.S. Census Bureau API. No estimated values are shown: the chart will be completed with official monthly and year-to-date figures.' },
-      { key: 'accumulated', title: 'Year-to-date comparison Jan–Jun {yearA} vs Jan–Jun {yearB}', unit: 'FOB value (US$) · HS 080810',
+      { key: 'accumulated', title: 'Year-to-date comparison for the first half', unit: 'FOB value (US$) · HS 080810',
+        titleTemplate: 'Year-to-date comparison Jan–Jun {yearA} vs Jan–Jun {yearB}', unitTemplate: 'FOB value (US$) · HS 080810',
         source: 'Source: U.S. Census Bureau – International Trade.',
         pending: 'The year-on-year change will be calculated on the official cumulative figures for both periods. Comparing six months of 2026 against the full year 2025 would be statistically incorrect, so no provisional figure is published.' }
     ],
     chartsOranges: [
-      { title: 'Trade indicator – Fresh orange USA → Peru', unit: 'May 2026 · observed market signals', source: 'Source: Tridge – Peru Fresh Orange Monthly Update, May 2026. Transaction data and price signals observed by Tridge. They do not necessarily represent the total official value of US exports.',
-        rows: [['Observed transactions', '23'], ['Observed origin', 'United States (only)'], ['Average unit price', 'US$ 1.776 /kg'], ['Year-on-year price change', '+12.19 %']] },
-      { title: 'Monthly evolution of US → Peru exports', unit: 'FOB value (US$), January–June 2025 against 2026 · HS 080510',
-        source: 'Intended source: U.S. Census Bureau – International Trade.',
-        pending: 'The monthly fresh orange series requires an authenticated query to the U.S. Census Bureau API. Missing months are not filled with estimated data.' }
+      { title: 'Leading origins of oranges imported by Peru – 2025', unit: 'Value imported by Peru, in millions of US$', source: 'Source: Observatory of Economic Complexity (OEC), 2025.',
+        bars: [['United States', 3.82, 'US$ 3.82 M', true], ['Chile', 0.527, 'US$ 0.527 M', false], ['Spain', 0.0439, 'US$ 0.0439 M', false]] },
+      { title: 'Trade indicator – Fresh orange USA → Peru', unit: 'May 2026 · observed market signals', source: 'Source: Tridge – Fresh Orange Monthly Update, May 2026. Transaction data and price signals observed by Tridge. They do not necessarily represent the total official value of US exports.',
+        rows: [['Observed transactions', '23'], ['Observed origin', 'United States (only)'], ['Average unit price', 'US$ 1.835 /kg'], ['Year-on-year price change', 'Not verifiable with available history']] },
+      { key: 'monthlyEvolution', title: 'Monthly evolution of US → Peru exports', unit: 'FOB value (US$), January–June · HS 080510',
+        titleTemplate: 'Monthly evolution of US → Peru exports', unitTemplate: 'FOB value (US$), January–June {yearA} against {yearB} · HS 080510',
+        source: 'Source: U.S. Census Bureau – International Trade.',
+        pending: 'The monthly fresh orange series requires an authenticated query to the U.S. Census Bureau API. Missing months are not filled with estimated data.' },
+      { key: 'accumulated', title: 'Year-to-date comparison for the first half', unit: 'FOB value (US$) · HS 080510',
+        titleTemplate: 'Year-to-date comparison Jan–Jun {yearA} vs Jan–Jun {yearB}', unitTemplate: 'FOB value (US$) · HS 080510',
+        source: 'Source: U.S. Census Bureau – International Trade.',
+        pending: 'The year-on-year change will be calculated on the official cumulative figures for both periods. Comparing six months of 2026 against the full year 2025 would be statistically incorrect, so no provisional figure is published.' }
+    ],
+    kpisGrapefruit: [
+      ['PERU IMPORTS 2025 · UNITED STATES', 'US$ 39.7 K', 'Leading origin of the Peruvian grapefruit market (US$ 44 K imported in total in 2025). OEC, 2025.'],
+      ['JANUARY 2026 · UNITED STATES', 'Official data being updated', 'Requires a connection to U.S. Census Bureau – International Trade.', 'januaryKpi'],
+      ['STATISTICAL CATEGORY', 'HS 080540', 'Grapefruit, fresh or dried, including pomelos. Includes varieties such as Rio Red and Star Ruby.'],
+      ['US → PERU EXPORTS · JAN–JUN 2026', 'Official data being updated', 'Requires a connection to U.S. Census Bureau – International Trade.', 'accumulatedKpi'],
+      ['LAST OFFICIAL UPDATE', 'June 2026', 'The July 2026 figure is published on September 3, 2026.']
+    ],
+    chartsGrapefruit: [
+      { title: 'Leading origins of grapefruit imported by Peru – 2025', unit: 'Value imported by Peru, in millions of US$', source: 'Source: Observatory of Economic Complexity (OEC), 2025.',
+        bars: [['United States', 0.0397, 'US$ 39.7 K', true], ['China', 0.00362, 'US$ 3.62 K', false], ['Chile', 0.000756, 'US$ 756', false]] },
+      { key: 'monthlyEvolution', title: 'Monthly evolution of US → Peru exports', unit: 'FOB value (US$), January–June · HS 080540',
+        titleTemplate: 'Monthly evolution of US → Peru exports', unitTemplate: 'FOB value (US$), January–June {yearA} against {yearB} · HS 080540',
+        source: 'Source: U.S. Census Bureau – International Trade.',
+        pending: 'The monthly series requires an authenticated query to the U.S. Census Bureau API. No estimated values are shown: the chart will be completed with official monthly and year-to-date figures.' },
+      { key: 'accumulated', title: 'Year-to-date comparison for the first half', unit: 'FOB value (US$) · HS 080540',
+        titleTemplate: 'Year-to-date comparison Jan–Jun {yearA} vs Jan–Jun {yearB}', unitTemplate: 'FOB value (US$) · HS 080540',
+        source: 'Source: U.S. Census Bureau – International Trade.',
+        pending: 'The year-on-year change will be calculated on the official cumulative figures for both periods. Comparing six months of 2026 against the full year 2025 would be statistically incorrect, so no provisional figure is published.' }
     ],
     ctaFruitTitle: 'Do you need to import fresh fruit from the United States?',
     ctaFruitText: 'Boston Global Business coordinates the documentation, transport and tracking of your cargo from the supplier in the United States to its destination in Peru.',
@@ -2048,8 +2155,8 @@ function buildMonthlyEvolutionChart(entry, tradeIntel, t) {
     });
   });
   return {
-    title: entry.title,
-    unit: fillTemplate(entry.unit, { yearA, yearB }),
+    title: entry.titleTemplate ? fillTemplate(entry.titleTemplate, { yearA, yearB }) : entry.title,
+    unit: fillTemplate(entry.unitTemplate || entry.unit, { yearA, yearB }),
     source: entry.source,
     bars,
   };
@@ -2068,15 +2175,39 @@ function buildAccumulatedChart(entry, tradeIntel, t) {
   const totalB = juneB.valueYearToDate;
   const change = ((totalB - totalA) / totalA) * 100;
   return {
-    title: fillTemplate(entry.title, { yearA, yearB }),
-    unit: entry.unit,
+    title: fillTemplate(entry.titleTemplate || entry.title, { yearA, yearB }),
+    unit: entry.unitTemplate ? fillTemplate(entry.unitTemplate, { yearA, yearB }) : entry.unit,
     source: entry.source,
     rows: [
       [t.h1Label + ' ' + yearA, fmtUsdM(totalA)],
       [t.h1Label + ' ' + yearB, fmtUsdM(totalB)],
       [t.yoyLabel, (change >= 0 ? '+' : '') + change.toFixed(1) + '%'],
     ],
+    bars: [
+      [t.h1Label + ' ' + yearA, totalA / 1e6, fmtUsdM(totalA), false],
+      [t.h1Label + ' ' + yearB, totalB / 1e6, fmtUsdM(totalB), true],
+    ],
   };
+}
+
+function computeAccumulatedKpi(tradeIntel, t) {
+  const yearB = findLatestCompleteH1Year(tradeIntel.months);
+  if (!yearB) return null;
+  const byKey = {};
+  tradeIntel.months.forEach((m) => { byKey[m.month] = m; });
+  const juneB = byKey[yearB + '-06'];
+  if (!juneB || juneB.valueYearToDate == null) return null;
+  return { value: fmtUsdM(juneB.valueYearToDate), note: fillTemplate(t.kpiAccumulatedNote, { year: yearB }) };
+}
+
+function computeJanuaryKpi(tradeIntel, t) {
+  const yearB = findLatestCompleteH1Year(tradeIntel.months);
+  if (!yearB) return null;
+  const byKey = {};
+  tradeIntel.months.forEach((m) => { byKey[m.month] = m; });
+  const jan = byKey[yearB + '-01'];
+  if (!jan || jan.valueMonthly == null) return null;
+  return { value: fmtUsdM(jan.valueMonthly), note: fillTemplate(t.kpiJanuaryNote, { year: yearB }) };
 }
 
 function toggleStyle(active, cfg) {
@@ -2111,6 +2242,8 @@ class Component extends DCLogic {
     lang: 'es',
     market: 'apples',
     tradeIntel: null,
+    tradeIntelOranges: null,
+    tradeIntelGrapefruit: null,
     brandFilter: 0,
     netTab: 'bgb',
     oppOriginCountry: 'US', oppOriginPort: '',
@@ -2152,6 +2285,16 @@ class Component extends DCLogic {
     fetch('./trade-intel-usa-peru-apples.json')
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => { if (data && data.months) this.setState({ tradeIntel: data }); })
+      .catch(() => {});
+
+    fetch('./trade-intel-usa-peru-oranges.json')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => { if (data && data.months) this.setState({ tradeIntelOranges: data }); })
+      .catch(() => {});
+
+    fetch('./trade-intel-usa-peru-grapefruit.json')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => { if (data && data.months) this.setState({ tradeIntelGrapefruit: data }); })
       .catch(() => {});
 
     this._onResize = () => this.setState({ width: window.innerWidth });
@@ -2672,8 +2815,20 @@ class Component extends DCLogic {
     const rel = this.props.evansRelationship || 'MARKET_REFERENCE';
     return [
       { id: 'evans-fruit', name: 'Evans Fruit Company', location: 'Washington, USA',
-        category: 'apples', relationship_status: rel, authorized_logo: false, last_verified: '2026-08-21',
-        varieties: 'Red Delicious / Top Red · Granny Smith · Honeycrisp · Gala · Fuji' }
+        categories: ['apples'], relationship_status: rel, authorized_logo: false, last_verified: '2026-08-21',
+        varieties: 'Red Delicious / Top Red · Granny Smith · Honeycrisp · Gala · Fuji' },
+      { id: 'cmi-orchards', name: 'CMI Orchards', location: 'Washington, USA',
+        categories: ['apples', 'pears', 'cherries'], relationship_status: 'ACTIVE_SUPPLIER', authorized_logo: false, last_verified: '2026-09-02',
+        varieties: 'Manzanas, peras y cerezas premium, incluida línea orgánica' },
+      { id: 'kings-river', name: 'Kings River Packing', location: 'California, USA',
+        categories: ['oranges', 'grapefruit', 'lemons'], relationship_status: 'ACTIVE_SUPPLIER', authorized_logo: false, last_verified: '2026-09-02',
+        varieties: 'Naranjas, toronjas y limones' },
+      { id: 'starr-ranch', name: 'Starr Ranch Growers', location: 'Washington, USA',
+        categories: ['apples', 'pears', 'cherries'], relationship_status: 'ACTIVE_SUPPLIER', authorized_logo: false, last_verified: '2026-09-02',
+        varieties: 'Manzanas, peras, cerezas y fruta de hueso' },
+      { id: 'honeybear', name: 'Honeybear Brands', location: 'Minnesota, USA',
+        categories: ['apples'], relationship_status: 'ACTIVE_SUPPLIER', authorized_logo: false, last_verified: '2026-09-02',
+        varieties: 'Manzanas premium, incluidas Pazazz® y Honeycrisp' }
     ];
   }
 
@@ -2683,12 +2838,15 @@ class Component extends DCLogic {
     // column eating into the centred nav. Below this the hamburger takes over.
     const desktop = this.state.width >= 1340;
     const teal = '#64CCC5', blue = '#176B87';
-    const catKeys = ['all', 'apples', 'oranges', 'kiwis', 'pears'];
-    const catLabel = { apples: t.brandsFilters[1], oranges: t.brandsFilters[2], kiwis: t.brandsFilters[3], pears: t.brandsFilters[4] };
+    const catKeys = ['all', 'apples', 'oranges', 'pears', 'cherries', 'grapefruit', 'lemons', 'kiwis'];
+    const catLabel = {
+      apples: t.brandsFilters[1], oranges: t.brandsFilters[2], pears: t.brandsFilters[3],
+      cherries: t.brandsFilters[4], grapefruit: t.brandsFilters[5], lemons: t.brandsFilters[6], kiwis: t.brandsFilters[7]
+    };
     const activeCat = catKeys[this.state.brandFilter || 0];
     const publicProducers = this.producers()
       .filter((p) => p.relationship_status === 'VERIFIED_BGB_ACCESS' || p.relationship_status === 'ACTIVE_SUPPLIER')
-      .filter((p) => activeCat === 'all' || p.category === activeCat);
+      .filter((p) => activeCat === 'all' || p.categories.includes(activeCat));
     const evansRel = this.props.evansRelationship || 'MARKET_REFERENCE';
     const evansPublic = evansRel === 'VERIFIED_BGB_ACCESS' || evansRel === 'ACTIVE_SUPPLIER';
 
@@ -2764,7 +2922,7 @@ class Component extends DCLogic {
       })),
       brandCards: publicProducers.map((p) => ({
         name: p.name, location: p.location,
-        category: catLabel[p.category] || p.category,
+        category: p.categories.map((c) => catLabel[c] || c).join(' · '),
         varieties: p.varieties,
         status: p.relationship_status === 'ACTIVE_SUPPLIER' ? t.statusAvailable : t.statusConsult
       })),
@@ -2904,14 +3062,16 @@ class Component extends DCLogic {
       fields: fields,
       pickApples: () => this.setState({ market: 'apples' }),
       pickOranges: () => this.setState({ market: 'oranges' }),
+      pickGrapefruit: () => this.setState({ market: 'grapefruit' }),
       applesBtnStyle: this.mktBtn(this.state.market === 'apples'),
       orangesBtnStyle: this.mktBtn(this.state.market === 'oranges'),
+      grapefruitBtnStyle: this.mktBtn(this.state.market === 'grapefruit'),
       sectionWrapperStyle: SECTION_WRAPPER_STYLE,
       aboutWrapperStyle: SECTION_WRAPPER_STYLE + '; display:grid; gap:clamp(40px,5vw,72px); grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); align-items:center',
       quoteWrapperStyle: SECTION_WRAPPER_STYLE + '; display:grid; gap:clamp(36px,4vw,64px); grid-template-columns:repeat(auto-fit,minmax(300px,1fr))',
       products: t.products.map((p) => ({
         badge: p[3], title: p[1], sub: p[2], body: p[4],
-        hs: p[0] === 'prod-naranja' ? t.hsOrange : t.hsApple,
+        hs: ({ 'prod-naranja': t.hsOrange, 'prod-pera': t.hsPear, 'prod-cereza': t.hsCherry, 'prod-toronja': t.hsGrapefruit, 'prod-limon': t.hsLemon })[p[0]] || t.hsApple,
         hasAttrs: p[6].length > 0,
         attrs: p[6].map((x) => ({ text: x })),
         hasNote: !!p[7], note: p[7],
@@ -2921,18 +3081,36 @@ class Component extends DCLogic {
         })
       })),
       flow: t.flow.map((x) => ({ icon: icon(x[0], 24, teal), label: x[1] })),
-      kpis: (this.state.market === 'apples' ? t.kpisApples : t.kpisOranges).map((k) => ({
-        label: k[0], value: k[1], note: k[2],
-        valueStyle: 'font-family:Montserrat,sans-serif; font-weight:700; letter-spacing:-0.015em; line-height:1.15; color:' +
-          (k[1].length > 16 ? 'rgba(5,59,80,0.62); font-size:18.5px' : '#176B87; font-size:clamp(26px,3vw,34px)')
-      })),
-      charts: (this.state.market === 'apples' ? t.chartsApples : t.chartsOranges).map((rawEntry) => {
+      kpis: ({ apples: t.kpisApples, oranges: t.kpisOranges, grapefruit: t.kpisGrapefruit }[this.state.market]).map((k) => {
+        const activeTradeIntel = {
+          apples: this.state.tradeIntel, oranges: this.state.tradeIntelOranges,
+          grapefruit: this.state.tradeIntelGrapefruit
+        }[this.state.market];
+        let value = k[1], note = k[2];
+        if (activeTradeIntel && k[3] === 'accumulatedKpi') {
+          const computed = computeAccumulatedKpi(activeTradeIntel, t);
+          if (computed) { value = computed.value; note = computed.note; }
+        } else if (activeTradeIntel && k[3] === 'januaryKpi') {
+          const computed = computeJanuaryKpi(activeTradeIntel, t);
+          if (computed) { value = computed.value; note = computed.note; }
+        }
+        return {
+          label: k[0], value: value, note: note,
+          valueStyle: 'font-family:Montserrat,sans-serif; font-weight:700; letter-spacing:-0.015em; line-height:1.15; color:' +
+            (value.length > 16 ? 'rgba(5,59,80,0.62); font-size:18.5px' : '#176B87; font-size:clamp(26px,3vw,34px)')
+        };
+      }),
+      charts: ({ apples: t.chartsApples, oranges: t.chartsOranges, grapefruit: t.chartsGrapefruit }[this.state.market]).map((rawEntry) => {
         let c = rawEntry;
-        if (this.state.tradeIntel) {
+        const activeTradeIntel = {
+          apples: this.state.tradeIntel, oranges: this.state.tradeIntelOranges,
+          grapefruit: this.state.tradeIntelGrapefruit
+        }[this.state.market];
+        if (activeTradeIntel) {
           if (rawEntry.key === 'monthlyEvolution') {
-            c = buildMonthlyEvolutionChart(rawEntry, this.state.tradeIntel, t) || rawEntry;
+            c = buildMonthlyEvolutionChart(rawEntry, activeTradeIntel, t) || rawEntry;
           } else if (rawEntry.key === 'accumulated') {
-            c = buildAccumulatedChart(rawEntry, this.state.tradeIntel, t) || rawEntry;
+            c = buildAccumulatedChart(rawEntry, activeTradeIntel, t) || rawEntry;
           }
         }
         const max = c.bars ? Math.max.apply(null, c.bars.map((b) => b[1])) : 1;
