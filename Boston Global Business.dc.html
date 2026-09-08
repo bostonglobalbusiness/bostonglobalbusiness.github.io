@@ -824,6 +824,97 @@
     </div>
   </section>
 
+  <section id="variedades" style="background:#ffffff; scroll-margin-top:104px">
+    <div style="{{ sectionWrapperStyle }}">
+      <div style="max-width:66ch; margin-bottom:clamp(28px,3.4vw,40px)">
+        <div data-reveal style="font-size:13px; letter-spacing:0.26em; color:#176B87; font-weight:700; margin-bottom:18px">{{ t.varietiesEyebrow }}</div>
+        <h2 data-reveal style="font-family:Montserrat,sans-serif; font-weight:700; font-size:clamp(28px,3.6vw,44px); line-height:1.1; letter-spacing:-0.015em; color:#053B50; margin:0 0 18px">{{ t.varietiesTitle }}</h2>
+        <p data-reveal style="font-size:17.5px; line-height:1.75; color:rgba(5,59,80,0.78); margin:0">{{ t.varietiesSub }}</p>
+      </div>
+
+      <div data-reveal style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:clamp(24px,3vw,32px)">
+        <sc-for list="{{ varietyTabs }}" as="vt" hint-placeholder-count="6">
+          <button type="button" onClick="{{ vt.onClick }}" style="{{ vt.style }}">{{ vt.label }}</button>
+        </sc-for>
+      </div>
+
+      <div style="display:grid; gap:clamp(16px,2vw,22px); grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+        <sc-for list="{{ varietyFullCards }}" as="v" hint-placeholder-count="3">
+          <article data-reveal style="border:1px solid rgba(5,59,80,0.14); background:#ffffff; padding:clamp(22px,2.4vw,30px); display:flex; flex-direction:column; gap:14px">
+            <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px">
+              <h4 style="font-family:Montserrat,sans-serif; font-weight:700; font-size:20px; color:#053B50; margin:0">{{ v.name }}</h4>
+              <sc-if value="{{ v.hasBadge }}" hint-placeholder-val="{{ false }}">
+                <span style="{{ v.badgeStyle }}">{{ v.badgeLabel }}</span>
+              </sc-if>
+            </div>
+            <div style="font-size:13.5px; color:#176B87; font-weight:600">{{ v.supplier }}</div>
+
+            <div style="display:grid; gap:6px">
+              <div style="font-size:12px; letter-spacing:0.14em; color:rgba(5,59,80,0.5); font-weight:700; text-transform:uppercase">{{ t.varSeasonLabel }}</div>
+              <div style="font-size:15px; line-height:1.6; color:rgba(5,59,80,0.75)">{{ v.season }}</div>
+            </div>
+
+            <div style="display:grid; gap:6px">
+              <div style="font-size:12px; letter-spacing:0.14em; color:rgba(5,59,80,0.5); font-weight:700; text-transform:uppercase">{{ t.varFlavorLabel }}</div>
+              <div style="font-size:15px; line-height:1.6; color:rgba(5,59,80,0.75)">{{ v.flavor }}</div>
+            </div>
+
+            <div style="display:grid; gap:8px; padding-top:8px; border-top:1px solid rgba(5,59,80,0.10)">
+              <div style="display:flex; justify-content:space-between; gap:12px">
+                <span style="font-size:12px; letter-spacing:0.14em; color:rgba(5,59,80,0.5); font-weight:700; text-transform:uppercase">{{ t.varResistLabel }}</span>
+                <span style="font-size:12px; font-weight:700; color:#176B87">{{ v.riskLevelLabel }}</span>
+              </div>
+              <div style="height:6px; background:rgba(5,59,80,0.08); position:relative; overflow:hidden">
+                <div style="{{ v.riskBarFillStyle }}"></div>
+              </div>
+              <div style="font-size:14px; line-height:1.6; color:rgba(5,59,80,0.68)">{{ v.riskName }}</div>
+            </div>
+
+            <sc-if value="{{ v.hasNote }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:13.5px; line-height:1.6; color:rgba(5,59,80,0.55); padding-top:8px; border-top:1px solid rgba(5,59,80,0.10)">{{ v.note }}</div>
+            </sc-if>
+          </article>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ hasConsultCards }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:clamp(24px,3vw,32px)">
+          <div style="font-size:13px; letter-spacing:0.18em; color:rgba(5,59,80,0.55); font-weight:700; margin-bottom:14px">{{ t.varConsultLabel }}</div>
+          <div style="display:grid; gap:1px; background:rgba(5,59,80,0.10)">
+            <sc-for list="{{ varietyConsultCards }}" as="v" hint-placeholder-count="4">
+              <div style="background:#ffffff; padding:14px 18px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; align-items:center">
+                <span style="font-weight:600; color:#053B50; font-size:15px">{{ v.name }}</span>
+                <span style="font-size:13px; color:rgba(5,59,80,0.55)">{{ v.supplier }} · {{ t.varConsultNote }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <div data-reveal style="margin-top:clamp(40px,5vw,56px); background:#053B50; padding:clamp(28px,3.2vw,44px); display:grid; gap:clamp(28px,3vw,40px); grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div>
+          <div style="font-size:12.5px; letter-spacing:0.2em; color:#64CCC5; font-weight:700; margin-bottom:14px">{{ t.glossGradesLabel }}</div>
+          <div style="display:grid; gap:10px">
+            <sc-for list="{{ gradeRows }}" as="g" hint-placeholder-count="6">
+              <div style="display:flex; justify-content:space-between; gap:12px; font-size:14.5px; color:rgba(238,238,238,0.85)">
+                <span>{{ g.fruit }}</span><span style="font-weight:600; color:#ffffff; text-align:right">{{ g.grade }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:12.5px; letter-spacing:0.2em; color:#64CCC5; font-weight:700; margin-bottom:14px">{{ t.glossCaliberLabel }}</div>
+          <p style="margin:0 0 10px; font-size:14.5px; line-height:1.65; color:rgba(238,238,238,0.80)">{{ t.glossCaliberText }}</p>
+          <div style="font-size:13.5px; color:rgba(238,238,238,0.65); line-height:1.7">{{ t.glossCaliberScale }}</div>
+        </div>
+        <div>
+          <div style="font-size:12.5px; letter-spacing:0.2em; color:#64CCC5; font-weight:700; margin-bottom:14px">{{ t.glossClubLabel }}</div>
+          <p style="margin:0; font-size:14.5px; line-height:1.65; color:rgba(238,238,238,0.80)">{{ t.glossClubText }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="mercado" style="background:#EEEEEE; scroll-margin-top:104px">
     <div style="{{ sectionWrapperStyle }}">
       <div style="max-width:62ch; margin-bottom:clamp(32px,4vw,48px)">
@@ -1379,6 +1470,107 @@ const COPY = {
     brandsTitle: 'Marcas que conectamos con tu mercado',
     brandsSub: 'Productores, marcas y líneas comerciales disponibles según producto, temporada y operación.',
     brandsFilters: ['Todas', 'Manzanas', 'Naranjas', 'Peras', 'Cerezas', 'Toronjas', 'Limones', 'Kiwis'],
+    varietiesEyebrow: 'VARIEDADES Y CALIDAD',
+    varietiesTitle: 'Conoce la variedad antes de comprar',
+    varietiesSub: 'Cada variedad tiene su propia temporada, perfil de sabor y resistencia real a la pudrición — información clave para decidir qué tan bien va a viajar tu pedido.',
+    varietyTabsList: ['Manzanas', 'Naranjas', 'Peras', 'Cerezas', 'Toronjas', 'Limones'],
+    varSeasonLabel: 'TEMPORADA', varFlavorLabel: 'PERFIL', varResistLabel: 'RESISTENCIA A LA PUDRICIÓN',
+    riskShort: 'Corta', riskMedium: 'Media', riskLong: 'Larga',
+    varConsultLabel: 'OTRAS VARIEDADES DISPONIBLES', varConsultNote: 'Ficha técnica bajo consulta',
+    glossGradesLabel: 'GRADOS OFICIALES USDA',
+    gradeRowsList: [
+      ['Manzana', 'US Extra Fancy > US Fancy > US No. 1 > US Utility'],
+      ['Naranja (CA/AZ)', 'US Fancy > US No. 1 > US Combination > US No. 2'],
+      ['Toronja', 'US No. 1 Bright > US No. 1 (varía por región)'],
+      ['Pera', 'US No. 1 (estándares separados para peras de verano/otoño e invierno)'],
+      ['Cereza', 'US No. 1'],
+      ['Limón', 'US No. 1']
+    ],
+    glossCaliberLabel: 'SISTEMA DE CALIBRE (MANZANA)',
+    glossCaliberText: 'Las manzanas se clasifican comercialmente por conteo de piezas por caja: a mayor número, menor tamaño de la fruta. El peso estándar de caja varía entre 38 y 40 libras según el empacador.',
+    glossCaliberScale: '48 · 56 · 64 · 72 · 80 · 88 · 100 · 113 · 125 · 138 · 150 · 163 · 175 · 198 · 216 (de mayor a menor calibre)',
+    glossClubLabel: '¿QUÉ ES UNA VARIEDAD CLUB?',
+    glossClubText: 'Una variedad club es aquella cuya siembra está restringida por contrato a un grupo limitado de productores autorizados por quien gestiona la licencia, a diferencia de variedades abiertas como Gala o Fuji que cualquier productor puede sembrar libremente. El objetivo real es evitar que una sobreoferta súbita haga caer el precio cuando sale una variedad nueva. Entre nuestros propios proveedores: Evans Fruit Company cultiva Cosmic Crisp® y EverCrisp® bajo licencia; CMI Orchards cultiva Kanzi®, KIKU®, Envy™, Jazz™, SugarBee® y Dazzle™; Honeybear Brands cultiva Pazazz®.',
+    varietyData: [
+      { category: 'apples', name: 'Cosmic Crisp®', tier: 'full', supplier: 'Evans Fruit Company', badge: 'club', badgeLabel: 'VARIEDAD CLUB',
+        season: 'Ventana de cosecha extendida; en producción comercial desde 2019.',
+        flavor: 'Crujiente y densa; cruce entre Honeycrisp y Enterprise.',
+        riskName: 'Criada genéticamente sin escaldado superficial ni bitter pit observados en almacenamiento — resistencia incorporada, no solo buen manejo.', riskLevel: 'long',
+        note: 'Patentada por Washington State University hasta 2032; su cultivo está restringido por contrato a productores de Washington.' },
+      { category: 'apples', name: 'EverCrisp®', tier: 'full', supplier: 'Evans Fruit Company', badge: 'club', badgeLabel: 'VARIEDAD CLUB',
+        season: 'Cosecha a fines de octubre.',
+        flavor: 'Firme y jugosa; cruce entre Honeycrisp y Fuji.',
+        riskName: 'Reclamo comercial de larga duración (hasta 11 meses en refrigerador); no encontramos un estudio revisado por pares que lo confirme con precisión.', riskLevel: 'long',
+        note: 'Variedad de "club abierto": cualquier productor puede sumarse pagando regalías a la cooperativa MAIA que la gestiona.' },
+      { category: 'apples', name: 'Honeycrisp', tier: 'full', supplier: 'Evans Fruit Company', badge: null,
+        season: 'Cosecha de fines de agosto a inicios de octubre.',
+        flavor: 'Muy crujiente y jugosa.',
+        riskName: 'Vulnerable a heridas de pedúnculo que se infectan durante el almacenamiento, y a soft scald cerca de 0°C.', riskLevel: 'short',
+        note: 'Vida útil efectiva de 4 a 6 semanas sin acondicionamiento previo.' },
+      { category: 'apples', name: 'Golden Delicious', tier: 'full', supplier: 'Evans Fruit Company', badge: null,
+        season: 'Cosecha aproximada: septiembre.',
+        flavor: 'Perfil dulce, pulpa firme.',
+        riskName: 'Baja susceptibilidad a escaldado superficial.', riskLevel: 'long',
+        note: 'Hasta 10 meses en atmósfera controlada, frente a ~6 meses en almacenamiento en aire común.' },
+      { category: 'apples', name: 'Cripps Pink', tier: 'full', supplier: 'Evans Fruit Company', badge: 'trademark', badgeLabel: 'PINK LADY® ES UNA MARCA, NO LA VARIEDAD',
+        season: 'Cosecha tardía: mediados de octubre a inicios de noviembre.',
+        flavor: 'Firme, perfil dulce-ácido equilibrado.',
+        riskName: 'Resistente a escaldado superficial durante 4 o más meses cuando se cosecha en el punto de madurez correcto — la ventana más larga de las variedades revisadas.', riskLevel: 'long',
+        note: 'Cripps Pink es el nombre de la variedad; Pink Lady® es una marca registrada que solo aplica a la fruta que cumple estándares más estrictos de azúcar, firmeza y color.' },
+      { category: 'apples', name: 'Gala', tier: 'consult', supplier: 'Evans Fruit Company' },
+      { category: 'apples', name: 'Fuji', tier: 'consult', supplier: 'Evans Fruit Company' },
+      { category: 'apples', name: 'Granny Smith', tier: 'consult', supplier: 'Evans Fruit Company' },
+      { category: 'apples', name: 'Red Delicious / Top Red', tier: 'consult', supplier: 'Evans Fruit Company' },
+      { category: 'apples', name: 'Kanzi®', tier: 'consult', supplier: 'CMI Orchards' },
+      { category: 'apples', name: 'KIKU®', tier: 'consult', supplier: 'CMI Orchards' },
+      { category: 'apples', name: 'Envy™', tier: 'consult', supplier: 'CMI Orchards' },
+      { category: 'apples', name: 'Jazz™', tier: 'consult', supplier: 'CMI Orchards' },
+      { category: 'apples', name: 'SugarBee®', tier: 'consult', supplier: 'CMI Orchards' },
+      { category: 'apples', name: 'Dazzle™', tier: 'consult', supplier: 'CMI Orchards' },
+      { category: 'apples', name: 'Pazazz®', tier: 'consult', supplier: 'Honeybear Brands' },
+      { category: 'oranges', name: 'Naranja U.S. Fancy', tier: 'full', supplier: 'Kings River Packing', badge: null,
+        season: 'Octubre a abril, con pico entre octubre y marzo (calendario propio de Kings River Packing).',
+        flavor: 'Fruta seleccionada para el mercado internacional, presentación uniforme y calidad comercial.',
+        riskName: 'Los mohos verde y azul (Penicillium) causan aproximadamente el 90% de la podredumbre postcosecha en cítricos; el frío retrasa significativamente su aparición.', riskLevel: 'medium',
+        note: '"U.S. Fancy" es el grado oficial más alto para naranjas de California/Arizona según USDA — coincide con el grado ya usado en nuestro catálogo.' },
+      { category: 'pears', name: 'Bartlett', tier: 'full', supplier: 'CMI Orchards / Starr Ranch Growers', badge: null,
+        season: 'Cosecha en agosto; en anaquel de agosto a enero.',
+        flavor: 'Jugosa y aromática; se ablanda y cambia de verde a amarillo al madurar — el color es la señal visible de punto óptimo.',
+        riskName: 'El techo de 3 meses en almacenamiento en aire está fijado por riesgo de moho gris (Botrytis) y moho azul (Penicillium), no solo por el ablandamiento natural.', riskLevel: 'medium',
+        note: '2 a 3 meses en aire; hasta 6 meses en atmósfera controlada.' },
+      { category: 'pears', name: 'D’Anjou', tier: 'full', supplier: 'CMI Orchards / Starr Ranch Growers', badge: null,
+        season: 'Cosecha en octubre — pera de invierno.',
+        flavor: 'Dulce con notas cítricas; se mantiene firme y verde incluso madura — la madurez se juzga al tacto cerca del tallo, no por el color.',
+        riskName: 'Almacenamiento más largo, limitado por escaldado superficial pasado el tercer mes; el moho gris (Botrytis) es el riesgo dominante durante todo el período.', riskLevel: 'long',
+        note: '3 a 5 meses de almacenamiento en frío.' },
+      { category: 'cherries', name: 'Bing', tier: 'full', supplier: 'CMI Orchards / Starr Ranch Growers', badge: null,
+        season: 'Cosecha de mediados de junio a mediados de agosto.',
+        flavor: 'Firme, jugosa, dulce, color rojo intenso; variedad estándar de la industria desde 1875.',
+        riskName: 'Susceptible a podredumbre café (Monilinia) y a picado superficial; vida útil general de 2 a 4 semanas en almacenamiento óptimo.', riskLevel: 'short',
+        note: 'No encontramos una cifra exacta específica por variedad — el riesgo aplica de forma similar a Bing y Rainier.' },
+      { category: 'cherries', name: 'Rainier', tier: 'full', supplier: 'CMI Orchards / Starr Ranch Growers', badge: null,
+        season: 'Cosecha de mediados de junio a fines de julio — madura pocos días después que Bing.',
+        flavor: 'Amarilla con blush rojo; firme, perfil más suave y menos ácido que Bing. Desarrollada por Washington State University en 1952.',
+        riskName: 'Mismo riesgo de podredumbre café y picado superficial que Bing.', riskLevel: 'short', note: null },
+      { category: 'grapefruit', name: 'Rio Red', tier: 'full', supplier: 'Kings River Packing', badge: 'trademark', badgeLabel: 'ORIGEN PATENTADO, HOY DE DOMINIO ABIERTO',
+        season: 'Dato de temporada específico para fruta cultivada en California no confirmado — referencia general de la industria: otoño-invierno.',
+        flavor: 'Pulpa roja intensa, dulce, menos amarga que las variedades blancas o rosadas.',
+        riskName: 'El daño por frío (chilling injury) es el limitante real, no un hongo: en Star Ruby a 2°C, los síntomas aparecen desde la primera semana y llegan a afectar cerca del 100% de la fruta a las 8 semanas sin sombreado previo a la cosecha.', riskLevel: 'medium',
+        note: 'Desarrollada por mutación inducida en Texas A&M en los años 70-80; la patente de variedad ya venció. Las marcas "Rio Star"/"Ruby-Sweet" siguen protegidas, pero solo aplican a fruta cultivada en Texas — por eso aquí se usa el nombre varietal simple.' },
+      { category: 'grapefruit', name: 'Star Ruby', tier: 'full', supplier: 'Kings River Packing', badge: 'trademark', badgeLabel: 'ORIGEN PATENTADO, HOY DE DOMINIO ABIERTO',
+        season: 'Dato de temporada específico para fruta cultivada en California no confirmado — referencia general de la industria: otoño-invierno.',
+        flavor: 'Piel más delgada, pulpa roja intensa; puede perder algo de color bajo ciertas condiciones de cultivo.',
+        riskName: 'Mismo riesgo de daño por frío (chilling injury) que Rio Red — es la variedad sobre la que existe el estudio específico citado.', riskLevel: 'medium',
+        note: 'Desarrollada por mutación inducida en Texas A&M a inicios de los años 70; patente ya vencida.' },
+      { category: 'lemons', name: 'Eureka', tier: 'full', supplier: 'Kings River Packing', badge: null,
+        season: 'Disponible casi todo el año, con pico en invierno tardío, primavera e inicio de verano. Es la variedad de limón más producida en California.',
+        flavor: 'Cáscara más rugosa y marcada.',
+        riskName: 'El moho azul (Penicillium italicum) es el patógeno postcosecha dominante; en frío tarda 12 a 13 días en mostrar la primera lesión visible, frente a 2-3 días a temperatura ambiente — el frío multiplica por cerca de 5 veces la resistencia.', riskLevel: 'long', note: null },
+      { category: 'lemons', name: 'Lisbon', tier: 'full', supplier: 'Kings River Packing', badge: null,
+        season: 'Dos cosechas concentradas al año; árbol más resistente al frío que Eureka.',
+        flavor: 'Fruta más redonda, cáscara más lisa y delgada.',
+        riskName: 'Mismo mecanismo y patógeno dominante que Eureka (moho azul, Penicillium italicum).', riskLevel: 'long', note: null }
+    ],
     brandsEmpty: 'Todavía no hay productores con relación comercial verificada publicados en esta categoría. Boston Global Business publica un productor únicamente después de confirmar el acceso comercial y la autorización de uso de marca.',
     brandsLegal: 'No se reproducen logotipos de terceros sin autorización. Cada tarjeta se publica solo con estado de relación comercial verificado por Boston Global Business.',
     statusConsult: 'Consultar', statusSeason: 'Temporada', statusAvailable: 'Disponible', statusSubject: 'Sujeto a disponibilidad',
@@ -1748,6 +1940,107 @@ const COPY = {
     brandsTitle: 'Brands we connect with your market',
     brandsSub: 'Growers, brands and commercial lines available depending on product, season and operation.',
     brandsFilters: ['All', 'Apples', 'Oranges', 'Pears', 'Cherries', 'Grapefruit', 'Lemons', 'Kiwis'],
+    varietiesEyebrow: 'VARIETIES & QUALITY',
+    varietiesTitle: 'Know the variety before you buy',
+    varietiesSub: 'Every variety has its own season, flavor profile, and real resistance to decay — key information for deciding how well your order will travel.',
+    varietyTabsList: ['Apples', 'Oranges', 'Pears', 'Cherries', 'Grapefruit', 'Lemons'],
+    varSeasonLabel: 'SEASON', varFlavorLabel: 'PROFILE', varResistLabel: 'DECAY RESISTANCE',
+    riskShort: 'Short', riskMedium: 'Medium', riskLong: 'Long',
+    varConsultLabel: 'OTHER VARIETIES AVAILABLE', varConsultNote: 'Technical profile available on request',
+    glossGradesLabel: 'OFFICIAL USDA GRADES',
+    gradeRowsList: [
+      ['Apple', 'US Extra Fancy > US Fancy > US No. 1 > US Utility'],
+      ['Orange (CA/AZ)', 'US Fancy > US No. 1 > US Combination > US No. 2'],
+      ['Grapefruit', 'US No. 1 Bright > US No. 1 (varies by region)'],
+      ['Pear', 'US No. 1 (separate standards for summer/fall and winter pears)'],
+      ['Cherry', 'US No. 1'],
+      ['Lemon', 'US No. 1']
+    ],
+    glossCaliberLabel: 'USDA CALIBER SYSTEM (APPLE)',
+    glossCaliberText: 'Apples are commercially graded by count per box: the higher the count, the smaller the fruit. Standard box weight varies between 38 and 40 lbs depending on the packer.',
+    glossCaliberScale: '48 · 56 · 64 · 72 · 80 · 88 · 100 · 113 · 125 · 138 · 150 · 163 · 175 · 198 · 216 (largest to smallest)',
+    glossClubLabel: 'WHAT IS A CLUB VARIETY?',
+    glossClubText: 'A club variety is one whose planting is contractually restricted to a limited group of growers authorized by whoever manages the license, unlike open varieties like Gala or Fuji that any grower can plant freely. The real purpose is to prevent a sudden oversupply from crashing the price when a new variety launches. Among our own suppliers: Evans Fruit Company grows Cosmic Crisp® and EverCrisp® under license; CMI Orchards grows Kanzi®, KIKU®, Envy™, Jazz™, SugarBee®, and Dazzle™; Honeybear Brands grows Pazazz®.',
+    varietyData: [
+      { category: 'apples', name: 'Cosmic Crisp®', tier: 'full', supplier: 'Evans Fruit Company', badge: 'club', badgeLabel: 'CLUB VARIETY',
+        season: 'Extended harvest window; in commercial production since 2019.',
+        flavor: 'Crisp and dense; a cross between Honeycrisp and Enterprise.',
+        riskName: 'Bred to show no observed superficial scald or bitter pit in storage — built-in resistance, not just good handling.', riskLevel: 'long',
+        note: 'Patented by Washington State University until 2032; growing rights are contractually restricted to Washington State growers.' },
+      { category: 'apples', name: 'EverCrisp®', tier: 'full', supplier: 'Evans Fruit Company', badge: 'club', badgeLabel: 'CLUB VARIETY',
+        season: 'Harvested in late October.',
+        flavor: 'Firm and juicy; a cross between Honeycrisp and Fuji.',
+        riskName: 'Long-storage claim (up to 11 months refrigerated) is a commercial claim — we could not find a peer-reviewed study confirming it precisely.', riskLevel: 'long',
+        note: 'An "open club" variety: any grower can join by paying royalties to the MAIA cooperative that manages it.' },
+      { category: 'apples', name: 'Honeycrisp', tier: 'full', supplier: 'Evans Fruit Company', badge: null,
+        season: 'Harvested late August to early October.',
+        flavor: 'Very crisp and juicy.',
+        riskName: 'Vulnerable to stem-puncture wounds that become infected during storage, and to soft scald near 0°C/32°F.', riskLevel: 'short',
+        note: 'Effective shelf life of 4 to 6 weeks without special conditioning.' },
+      { category: 'apples', name: 'Golden Delicious', tier: 'full', supplier: 'Evans Fruit Company', badge: null,
+        season: 'Approximate harvest: September.',
+        flavor: 'Sweet profile, firm flesh.',
+        riskName: 'Low susceptibility to superficial scald.', riskLevel: 'long',
+        note: 'Up to 10 months in controlled-atmosphere storage, vs. ~6 months in regular air storage.' },
+      { category: 'apples', name: 'Cripps Pink', tier: 'full', supplier: 'Evans Fruit Company', badge: 'trademark', badgeLabel: 'PINK LADY® IS A TRADEMARK, NOT THE VARIETY',
+        season: 'Late harvest: mid-October to early November.',
+        flavor: 'Firm, balanced sweet-tart profile.',
+        riskName: 'Resists superficial scald for 4+ months when picked at the right maturity — the longest window among the varieties reviewed.', riskLevel: 'long',
+        note: 'Cripps Pink is the variety name; Pink Lady® is a registered trademark that only applies to fruit meeting stricter sugar, firmness, and color standards.' },
+      { category: 'apples', name: 'Gala', tier: 'consult', supplier: 'Evans Fruit Company' },
+      { category: 'apples', name: 'Fuji', tier: 'consult', supplier: 'Evans Fruit Company' },
+      { category: 'apples', name: 'Granny Smith', tier: 'consult', supplier: 'Evans Fruit Company' },
+      { category: 'apples', name: 'Red Delicious / Top Red', tier: 'consult', supplier: 'Evans Fruit Company' },
+      { category: 'apples', name: 'Kanzi®', tier: 'consult', supplier: 'CMI Orchards' },
+      { category: 'apples', name: 'KIKU®', tier: 'consult', supplier: 'CMI Orchards' },
+      { category: 'apples', name: 'Envy™', tier: 'consult', supplier: 'CMI Orchards' },
+      { category: 'apples', name: 'Jazz™', tier: 'consult', supplier: 'CMI Orchards' },
+      { category: 'apples', name: 'SugarBee®', tier: 'consult', supplier: 'CMI Orchards' },
+      { category: 'apples', name: 'Dazzle™', tier: 'consult', supplier: 'CMI Orchards' },
+      { category: 'apples', name: 'Pazazz®', tier: 'consult', supplier: 'Honeybear Brands' },
+      { category: 'oranges', name: 'U.S. Fancy Orange', tier: 'full', supplier: 'Kings River Packing', badge: null,
+        season: 'October to April, peaking October–March (per Kings River Packing’s own seasonality chart).',
+        flavor: 'Fruit selected for the international market, uniform presentation and commercial quality.',
+        riskName: 'Green and blue mold (Penicillium) cause roughly 90% of postharvest citrus decay; cold storage significantly delays its onset.', riskLevel: 'medium',
+        note: '"U.S. Fancy" is the highest official USDA grade for California/Arizona oranges — matches the grade already used in our catalog.' },
+      { category: 'pears', name: 'Bartlett', tier: 'full', supplier: 'CMI Orchards / Starr Ranch Growers', badge: null,
+        season: 'Harvested in August; on shelves August through January.',
+        flavor: 'Juicy and fragrant; softens and turns from green to yellow as it ripens — color is the visible cue for peak ripeness.',
+        riskName: 'The 3-month air-storage ceiling is set by gray mold (Botrytis) and blue mold (Penicillium) risk, not just natural softening.', riskLevel: 'medium',
+        note: '2 to 3 months in air storage; up to 6 months in controlled atmosphere.' },
+      { category: 'pears', name: 'D’Anjou', tier: 'full', supplier: 'CMI Orchards / Starr Ranch Growers', badge: null,
+        season: 'Harvested in October — a winter pear.',
+        flavor: 'Subtly sweet with citrus notes; stays firm and green even when ripe — ripeness is judged by feel near the stem, not by color.',
+        riskName: 'Longer storage life, limited by superficial scald past the third month; gray mold (Botrytis) is the dominant risk throughout.', riskLevel: 'long',
+        note: '3 to 5 months of cold storage.' },
+      { category: 'cherries', name: 'Bing', tier: 'full', supplier: 'CMI Orchards / Starr Ranch Growers', badge: null,
+        season: 'Harvested mid-June to mid-August.',
+        flavor: 'Firm, juicy, sweet, deep red color; the industry-standard variety since 1875.',
+        riskName: 'Susceptible to brown rot (Monilinia) and surface pitting; general usable life of 2 to 4 weeks under optimal storage.', riskLevel: 'short',
+        note: 'We could not find an exact figure specific to each variety — the risk applies similarly to Bing and Rainier.' },
+      { category: 'cherries', name: 'Rainier', tier: 'full', supplier: 'CMI Orchards / Starr Ranch Growers', badge: null,
+        season: 'Harvested mid-June to late July — ripens a few days after Bing.',
+        flavor: 'Yellow with a red blush; firm, milder and less tart than Bing. Developed by Washington State University in 1952.',
+        riskName: 'Same brown rot and surface pitting risk as Bing.', riskLevel: 'short', note: null },
+      { category: 'grapefruit', name: 'Rio Red', tier: 'full', supplier: 'Kings River Packing', badge: 'trademark', badgeLabel: 'PATENTED ORIGIN, NOW OPEN VARIETY',
+        season: 'California-specific season data not confirmed — general industry reference: fall-winter.',
+        flavor: 'Deep red flesh, sweet, less bitter than white or pink varieties.',
+        riskName: 'Chilling injury — not a fungus — is the real limiting factor: in Star Ruby at 2°C/36°F, symptoms appear within the first week and reach close to 100% of fruit by week 8 without pre-harvest shading.', riskLevel: 'medium',
+        note: 'Developed through induced mutation breeding at Texas A&M in the 1970s-80s; the variety patent has long expired. The "Rio Star"/"Ruby-Sweet" trademarks are still protected, but only apply to Texas-grown fruit — hence the plain varietal name used here.' },
+      { category: 'grapefruit', name: 'Star Ruby', tier: 'full', supplier: 'Kings River Packing', badge: 'trademark', badgeLabel: 'PATENTED ORIGIN, NOW OPEN VARIETY',
+        season: 'California-specific season data not confirmed — general industry reference: fall-winter.',
+        flavor: 'Thinner peel, deep red flesh; can lose some color under certain growing conditions.',
+        riskName: 'Same chilling-injury risk as Rio Red — this is the variety the specific cited study covers.', riskLevel: 'medium',
+        note: 'Developed through induced mutation breeding at Texas A&M in the early 1970s; patent has expired.' },
+      { category: 'lemons', name: 'Eureka', tier: 'full', supplier: 'Kings River Packing', badge: null,
+        season: 'Available nearly year-round, peaking in late winter, spring, and early summer. California’s most-produced lemon variety.',
+        flavor: 'More ridged, rougher peel.',
+        riskName: 'Blue mold (Penicillium italicum) is the dominant postharvest pathogen; under cold storage it takes 12-13 days to show the first visible lesion, vs. 2-3 days at room temperature — cold storage multiplies resistance roughly 5-fold.', riskLevel: 'long', note: null },
+      { category: 'lemons', name: 'Lisbon', tier: 'full', supplier: 'Kings River Packing', badge: null,
+        season: 'Two concentrated harvests per year; a more cold-hardy tree than Eureka.',
+        flavor: 'Rounder fruit, smoother and thinner peel.',
+        riskName: 'Same mechanism and dominant pathogen as Eureka (blue mold, Penicillium italicum).', riskLevel: 'long', note: null }
+    ],
     brandsEmpty: 'No growers with a verified commercial relationship are published in this category yet. Boston Global Business publishes a grower only after confirming commercial access and brand use authorization.',
     brandsLegal: 'Third-party logos are not reproduced without authorization. Each card is published only with a relationship status verified by Boston Global Business.',
     statusConsult: 'Ask', statusSeason: 'In season', statusAvailable: 'Available', statusSubject: 'Subject to availability',
@@ -2829,6 +3122,13 @@ class Component extends DCLogic {
     // column eating into the centred nav. Below this the hamburger takes over.
     const desktop = this.state.width >= 1340;
     const teal = '#64CCC5', blue = '#176B87';
+    const varietyCatKeys = ['apples', 'oranges', 'pears', 'cherries', 'grapefruit', 'lemons'];
+    const activeVarietyCat = varietyCatKeys[this.state.varietyFilter || 0];
+    const riskBarPct = { short: '33%', medium: '66%', long: '100%' };
+    const riskLabelMap = { short: t.riskShort, medium: t.riskMedium, long: t.riskLong };
+    const badgeStyleFor = (badge) => badge === 'club'
+      ? 'background:rgba(5,59,80,0.92); color:#64CCC5; font-size:10.5px; letter-spacing:0.12em; font-weight:700; padding:5px 10px; display:inline-block'
+      : 'background:rgba(23,107,135,0.10); color:#176B87; font-size:10.5px; letter-spacing:0.12em; font-weight:700; padding:5px 10px; display:inline-block';
     const catKeys = ['all', 'apples', 'oranges', 'pears', 'cherries', 'grapefruit', 'lemons', 'kiwis'];
     const catLabel = {
       apples: t.brandsFilters[1], oranges: t.brandsFilters[2], pears: t.brandsFilters[3],
@@ -2903,6 +3203,30 @@ class Component extends DCLogic {
         slotId: ['ruta-seattle', 'ruta-los-angeles', 'ruta-callao', 'ruta-paita'][i],
         placeholder: p.name + ' — ' + (p.role === 'origin' ? 'puerto de origen' : 'puerto de destino')
       })),
+      varietyTabs: t.varietyTabsList.map((label, i) => ({
+        label: label,
+        onClick: () => this.setState({ varietyFilter: i }),
+        style: toggleStyle((this.state.varietyFilter || 0) === i, {
+          onBg: '#176B87', offBg: 'transparent', onColor: '#ffffff', offColor: 'rgba(5,59,80,0.72)',
+          onBorder: '1px solid #176B87', offBorder: '1px solid rgba(5,59,80,0.20)',
+          rest: 'font-size:14.5px; font-weight:600; letter-spacing:0.03em; padding:10px 18px; cursor:pointer; transition:background-color .2s ease, color .2s ease, border-color .2s ease'
+        })
+      })),
+      varietyFullCards: t.varietyData
+        .filter((v) => v.category === activeVarietyCat && v.tier === 'full')
+        .map((v) => ({
+          name: v.name, supplier: v.supplier,
+          hasBadge: !!v.badge, badgeLabel: v.badgeLabel, badgeStyle: badgeStyleFor(v.badge),
+          season: v.season, flavor: v.flavor,
+          riskName: v.riskName, riskLevelLabel: riskLabelMap[v.riskLevel] || '',
+          riskBarFillStyle: 'position:absolute; inset:0 auto 0 0; width:' + (riskBarPct[v.riskLevel] || '33%') + '; background:#64CCC5',
+          hasNote: !!v.note, note: v.note
+        })),
+      varietyConsultCards: t.varietyData
+        .filter((v) => v.category === activeVarietyCat && v.tier === 'consult')
+        .map((v) => ({ name: v.name, supplier: v.supplier })),
+      hasConsultCards: t.varietyData.filter((v) => v.category === activeVarietyCat && v.tier === 'consult').length > 0,
+      gradeRows: t.gradeRowsList.map((g) => ({ fruit: g[0], grade: g[1] })),
       brandCards: publicProducers.map((p) => ({
         name: p.name, location: p.location,
         category: p.categories.map((c) => catLabel[c] || c).join(' · '),
