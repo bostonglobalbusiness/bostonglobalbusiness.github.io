@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10T14:14:19.955Z",
+  "generatedAt": "2026-11-10T20:47:45.056Z",
   "source": "U.S. Census Bureau, International Trade Data API",
   "sourceUrl": "https://www.census.gov/foreign-trade/",
   "hsCode": "080810",
@@ -162,6 +162,11 @@
       "month": "2026-07",
       "valueMonthly": 1966835,
       "valueYearToDate": 16051630
+    },
+    {
+      "month": "2026-08",
+      "valueMonthly": 1331825,
+      "valueYearToDate": 17383455
     }
   ]
 }
