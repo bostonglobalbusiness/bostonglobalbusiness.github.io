@@ -8,4 +8,4 @@ Disallow: /client/
 Disallow: /operations/
 Disallow: /admin/
 
-Sitemap: https://bostonglobalbusiness.com/sitemap.xml
+Sitemap: https://www.bostonglobalbusiness.com/sitemap.xml

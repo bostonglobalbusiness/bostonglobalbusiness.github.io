@@ -4,42 +4,42 @@
      cuando el sitio se implemente con routing real. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://bostonglobalbusiness.com/</loc>
+    <loc>https://www.bostonglobalbusiness.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://bostonglobalbusiness.com/frutas-usa</loc>
+    <loc>https://www.bostonglobalbusiness.com/frutas-usa</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bostonglobalbusiness.com/manzanas-estados-unidos</loc>
+    <loc>https://www.bostonglobalbusiness.com/manzanas-estados-unidos</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bostonglobalbusiness.com/manzanas/granny-smith</loc>
+    <loc>https://www.bostonglobalbusiness.com/manzanas/granny-smith</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bostonglobalbusiness.com/manzanas/red-delicious</loc>
+    <loc>https://www.bostonglobalbusiness.com/manzanas/red-delicious</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bostonglobalbusiness.com/naranjas-estados-unidos</loc>
+    <loc>https://www.bostonglobalbusiness.com/naranjas-estados-unidos</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bostonglobalbusiness.com/productores-usa</loc>
+    <loc>https://www.bostonglobalbusiness.com/productores-usa</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bostonglobalbusiness.com/logistica-frutas-usa-peru</loc>
+    <loc>https://www.bostonglobalbusiness.com/logistica-frutas-usa-peru</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
